@@ -19,7 +19,8 @@ export default {
       'black':'#023047',
       'wihte':'#fff',
       'gray-bg':'#3a506b'
-    }
+    },
+    fontFamily:{iranSans:'iranSans'}
   },
   plugins: [],
 }

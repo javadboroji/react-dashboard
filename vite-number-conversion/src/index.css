@@ -34,6 +34,9 @@ body {
   min-height: 100vh;
   font-family: iranSans !important;
 }
+button,h1,h2,h3,h4,p,span,a,label{
+  font-family: iranSans !important;
+}
 
 h1 {
   font-size: 3.2em;

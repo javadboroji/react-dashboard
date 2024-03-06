@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import SideBar from "../../Components/SideBar/SideBar.js";
 import HeaderLayout from "../../Components/Header/HeaderLayout.tsx";
 
-Layout.propTypes = {
+type Props = {
+    children: JSX.Element[] | JSX.Element  }
 
-};
-
-function Layout({childern}) {
+function Layout({childern}:Props) {
     return (
         <>
         <div className={'flex flex-col w-[100%] items-start'}>

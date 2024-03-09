@@ -6,7 +6,7 @@ import FormDate from './FormDate';
 type formsPropsType = {
     fieldType: string,
     placeholder:string,
-    defaultValue:string
+    defaultValue?   :string
 }
 function Forms(props: formsPropsType) {
     const { fieldType } = props;

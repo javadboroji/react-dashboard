@@ -5,6 +5,7 @@ import { FaBlog } from "react-icons/fa";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiSolidCategory } from "react-icons/bi";
 import { TbReport } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 
 type menu = {
     id: string,
@@ -18,7 +19,7 @@ function SideBar() {
         {
             id: '1',
             name: 'پنل کاربری',
-            link: '#',
+            link: '/dashboard',
             icon:<MdDashboard size={24}/>
         },
         {
@@ -36,7 +37,7 @@ function SideBar() {
         {
             id: '4',
             name: 'محصولات',
-            link: '#',
+            link: '/product',
             icon:<MdOutlineProductionQuantityLimits size={24}/>
         },
         {
@@ -53,14 +54,14 @@ function SideBar() {
         },
     ]
     return (
-        <div className='bg-Navy-blue mx-2 rounded-2xl my-2 w-64 flex-auto '>
+        <div className='bg-Navy-blue mx-2 rounded-2xl my-2 w-64  '>
             {/*<p className='text-wihte bg-black p-6 font-semibold text-2xl'>داشبورد</p>*/}
             <div className='flex flex-col'>
                 {dashBoardItems && dashBoardItems.map((menu) => (
-                    <a className='flex items-center text-wihte p-6 text-base font-medium mr-2' key={menu.id} href={menu.link}>
+                    <Link className='flex items-center text-wihte p-6 text-base font-medium mr-2' key={menu.id} to={menu.link}>
                         <span className='ml-4'>{menu.icon}</span>
                         <span>{menu.name}</span>
-                    </a>
+                    </Link>
                 ))}
             </div>
         </div>

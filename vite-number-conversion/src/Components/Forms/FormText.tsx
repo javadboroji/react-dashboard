@@ -3,13 +3,15 @@ import { Input } from 'antd';
 
 type fromTextType={
     placeholder:string,
-    defaultValue:string
+    defaultValue?:string|number,
+    type?:string,
+    style?:string
 }
 function FormText(props:fromTextType) {
-    const {placeholder,defaultValue}=props
+    const {placeholder,defaultValue, type, style}=props
   return (
     <>
-        <Input placeholder={placeholder } defaultValue={defaultValue}/>
+        <Input placeholder={placeholder } defaultValue={defaultValue} type={type}  className={style}/>
     </>
   )
 }

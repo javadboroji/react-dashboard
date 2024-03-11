@@ -31,6 +31,9 @@ function CusModal({ open, setOpen, data }: modalType) {
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
         width={"70rem"}
+        okText={"ذخیره"}
+        cancelText={"لغو"}
+      
       >
         {data}
       </Modal>

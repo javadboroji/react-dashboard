@@ -1,16 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CusGrid from '../../Components/LocalComponents/CusGrid'
 import { CiCirclePlus } from "react-icons/ci";
-import { Button } from 'antd';
-interface DataType {
-  key: string;
-  name: string;
-  category: string;
-  count: number | any;
-  price: number | any;
-}
+import { Button, TableProps } from 'antd';
+import { columnProductType, rowProductType } from '../../Types/Types';
+
 function Product() {
-  const data: DataType[] = [
+
+  const data: rowProductType[] = [
       {
         key: '1',
         name: 'محصول',
@@ -34,7 +30,31 @@ function Product() {
       },
   
     ];
+    const columns: columnProductType[]  = [
+      {
+        title: 'نام',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'دسته بندی',
+        dataIndex: 'category',
+        key: 'category',
+      },
+      {
+        title: 'تعداد',
+        dataIndex: 'count',
+        key: 'count',
+      },
+      {
+        title: 'قیمت',
+        key: 'price',
+        dataIndex: 'price',
   
+      },
+      
+  
+    ];
   return (
     <div className='flex flex-col flex-1'>
       <div className='flex justify-between mx-4 items-center'>
@@ -43,7 +63,7 @@ function Product() {
       افزودن
      </Button>
       </div>
-      <CusGrid data={data}/>
+      <CusGrid data={data} columns={columns} modal={true} modaltitle={'محصولات'}/>
     </div>
   )
 }

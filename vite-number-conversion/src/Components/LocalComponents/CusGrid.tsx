@@ -7,18 +7,19 @@ import CusModal from './CusModal';
 import Forms from '../Forms/Forms';
 import FormText from '../Forms/FormText';
 import FormSelect from '../Forms/FormSelect';
+import { columnProductType, rowProductType } from '../../Types/Types';
 
-interface DataType {
-  key: string;
-  name: string;
-  category: string;
-  count: number | any;
-  price: number | any;
+
+type DataType = {
+  data: rowProductType[],
+  columns: columnProductType[],
+  modal?: boolean,
+  modaltitle?: string
 }
-function CusGrid({data}:DataType[]) {
+const CusGrid: React.FC<DataType> = ({ data, columns, modal, modaltitle }) => {
   //modal state
   const [open, setOpen] = useState(false);
-  const [rowSelect, setRowSelect] = useState<DataType>({
+  const [rowSelect, setRowSelect] = useState<rowProductType>({
     key: "",
     name: "",
     category: "",
@@ -26,84 +27,35 @@ function CusGrid({data}:DataType[]) {
     price: null
   });
 
-  const columns: TableProps<DataType>['columns'] = [
-    {
-      title: 'نام',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: 'دسته بندی',
-      dataIndex: 'category',
-      key: 'category',
-    },
-    {
-      title: 'تعداد',
-      dataIndex: 'count',
-      key: 'count',
-    },
-    {
-      title: 'قیمت',
-      key: 'price',
-      dataIndex: 'price',
 
-    },
-    {
-      title: 'عملیات',
-      key: 'action',
-      dataIndex: 'action  ',
-      render: () => (
-        <>
-          <Button type-btn="edit" onClick={() => setOpen(true)}> ویرایش</Button>
-          <Button type-btn="delete"> حذف</Button>
-        </>
-      )
-    },
 
-  ];
-
-  // const data: DataType[] = [
-  //   {
-  //     key: '1',
-  //     name: 'محصول',
-  //     category: 'لباس',
-  //     count: 12,
-  //     price: 15000000,
-  //   },
-  //   {
-  //     key: '2',
-  //     name: '2محصول',
-  //     category: 'لباس',
-  //     count: 10,
-  //     price: 18000000,
-  //   },
-  //   {
-  //     key: '3',
-  //     name: '3محصول',
-  //     category: 'لباس',
-  //     count: 15,
-  //     price: 19000000,
-  //   },
-
-  // ];
-
-  const GridContent = ( ) => {
+  const GridContent = () => {
     console.log(rowSelect);
-    const category=[{lable:'1',value:'لباس' },{lable:'2',value:'کفش' },{lable:'3',value:'عینک' }]
+    const category = [{ lable: '1', value: 'لباس' }, { lable: '2', value: 'کفش' }, { lable: '3', value: 'عینک' }]
     return (
       <div className='flex w-full'>
         <Row gutter={3} className='w-full flex items-stretch'>
           <Col xl={12}> <FormText placeholder='نام محصول' defaultValue={rowSelect.name} key={'productName'} style={"p-3 mb-3"} /></Col>
           <Col xl={12}> <FormText placeholder='تعداد' type='number' defaultValue={rowSelect.count} key={'count'} style={"p-3 mb-3"} /></Col>
           <Col xl={12}>   <FormText placeholder='قیمت' type='number' defaultValue={rowSelect.price} key={'price'} style={"p-3 mb-3"} /></Col>
-          <Col xl={12}>   <FormSelect defualtValue={rowSelect.category} options={category} style={"p-0 w-full flex flex-grow flex-1"} /></Col>
+          <Col xl={12}>   <FormSelect defualtValue={rowSelect.category} options={category} style={"p-0 w-full flex flex-grow flex-1 h-12"} /></Col>
         </Row>
-
-
       </div>
     )
   }
 
+  //column 
+  const col = [...columns, {
+    title: 'عملیات',
+    key: 'action',
+    dataIndex: 'action  ',
+    render: () => (
+      <>
+        <Button type-btn="edit" onClick={() => setOpen(true)}> ویرایش</Button>
+        <Button type-btn="delete"> حذف</Button>
+      </>
+    )
+  }]
 
   useEffect(() => {
     console.log(rowSelect);
@@ -111,8 +63,11 @@ function CusGrid({data}:DataType[]) {
   }, [rowSelect])
 
   return (
-    <div><Table columns={columns} dataSource={data} onRow={(record, index) => { return { onClick: (event) => setRowSelect(record) } }} />
-      <CusModal open={open} setOpen={setOpen} data={<GridContent />} />
+    <div>
+      <Table columns={col} dataSource={data} onRow={(record, index) => { return { onClick: (event) => setRowSelect(record) } }} />
+      {modal && <CusModal title={modaltitle} open={open} setOpen={setOpen} >
+        <GridContent />
+      </CusModal>}
     </div>
   )
 }

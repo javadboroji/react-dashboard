@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "antd";
 
 type modalType = {
-  title:string,
+  title?:string,
   open: boolean,
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   data?: JSX.Element,

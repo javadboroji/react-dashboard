@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 
 type modalType = {
   title:string,
@@ -33,6 +33,8 @@ function CusModal({ open,title, setOpen, data,children  }: modalType) {
         onCancel={handleCancel}
         width={"70rem"}
         okText={"ذخیره"}
+        // okButtonProps={()=><Button></Button>}
+        okType={"default"}
         cancelText={"لغو"}
       
       >

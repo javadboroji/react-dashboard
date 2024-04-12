@@ -21,13 +21,11 @@ const NewUserForm: React.FC<modalPrps> = ({ isModalOpen, handleCancel, handleOk,
 
                         <Col xs={24} lg={12}> <FormText style='p-3' placeholder='نام کاربری' /></Col>
                         <Col xs={24} lg={12}><FormText   style='p-3' placeholder='آیدی کاربری' /></Col>
-
                         <Col xs={24} lg={12}> <FormText  style='p-3' placeholder=' ایمیل' type='email' /></Col>
                         <Col xs={24} lg={12}><FormText  style='p-3' placeholder=' پسورد' type='password' /></Col>
-
-
                         <Col xs={24} lg={12}> <FormText  style='p-3' placeholder=' شماره تلفن' type='number' /></Col>
-                        <Col xs={24} lg={12}> <FormSelect style='w-full h-12'  options={Roles} /></Col>
+                        <Col xs={24} lg={12}> <FormSelect style='w-full h-12'  options={Roles} inputLable='نقش' /></Col>
+                        <Col xs={24} lg={24}><FormText   style='py-6' placeholder='توضییحات' /></Col>
                     </Row>
                 </div>
 

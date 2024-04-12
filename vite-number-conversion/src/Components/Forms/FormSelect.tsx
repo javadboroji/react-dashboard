@@ -7,11 +7,12 @@ type selectInputType ={
 type formSelectType={
   defualtValue?:string,
   options:selectInputType[],
-  style?:string
+  style?:string,
+  inputLable?:string
 }
 
 function FormSelect(props:formSelectType) {
-  const {defualtValue,options,style}=props
+  const {defualtValue,options,style ,inputLable}=props
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
@@ -19,6 +20,7 @@ function FormSelect(props:formSelectType) {
    
     <div className='w-full '>
       <Select
+      placeholder={inputLable}
       defaultValue={defualtValue}
       onChange={handleChange}
       options={options}

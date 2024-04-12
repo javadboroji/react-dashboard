@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Modal } from "antd";
 
 type modalType = {
+  title:string,
   open: boolean,
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  data: JSX.Element
+  data?: JSX.Element,
+  children?: React.ReactNode;
 }
-function CusModal({ open, setOpen, data }: modalType) {
+function CusModal({ open,title, setOpen, data,children  }: modalType) {
 
   const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -23,9 +25,8 @@ function CusModal({ open, setOpen, data }: modalType) {
   };
   return (
     <>
-
       <Modal
-        title="Title"
+        title={title}
         open={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
@@ -35,7 +36,7 @@ function CusModal({ open, setOpen, data }: modalType) {
         cancelText={"لغو"}
       
       >
-        {data}
+        {children }
       </Modal>
     </>
   );

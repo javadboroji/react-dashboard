@@ -25,7 +25,7 @@ function SideBar() {
         {
             id: '2',
             name: 'کاربران ',
-            link: '#',
+            link: '/users',
             icon:<FaUsers  size={24}/>
         },
         {

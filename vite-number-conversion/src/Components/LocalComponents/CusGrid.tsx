@@ -15,7 +15,7 @@ interface DataType {
   count: number | any;
   price: number | any;
 }
-function CusGrid() {
+function CusGrid({data}:DataType[]) {
   //modal state
   const [open, setOpen] = useState(false);
   const [rowSelect, setRowSelect] = useState<DataType>({
@@ -62,32 +62,32 @@ function CusGrid() {
 
   ];
 
-  const data: DataType[] = [
-    {
-      key: '1',
-      name: 'محصول',
-      category: 'لباس',
-      count: 12,
-      price: 15000000,
-    },
-    {
-      key: '2',
-      name: '2محصول',
-      category: 'لباس',
-      count: 10,
-      price: 18000000,
-    },
-    {
-      key: '3',
-      name: '3محصول',
-      category: 'لباس',
-      count: 15,
-      price: 19000000,
-    },
+  // const data: DataType[] = [
+  //   {
+  //     key: '1',
+  //     name: 'محصول',
+  //     category: 'لباس',
+  //     count: 12,
+  //     price: 15000000,
+  //   },
+  //   {
+  //     key: '2',
+  //     name: '2محصول',
+  //     category: 'لباس',
+  //     count: 10,
+  //     price: 18000000,
+  //   },
+  //   {
+  //     key: '3',
+  //     name: '3محصول',
+  //     category: 'لباس',
+  //     count: 15,
+  //     price: 19000000,
+  //   },
 
-  ];
+  // ];
 
-  const GridContent = () => {
+  const GridContent = ( ) => {
     console.log(rowSelect);
     const category=[{lable:'1',value:'لباس' },{lable:'2',value:'کفش' },{lable:'3',value:'عینک' }]
     return (

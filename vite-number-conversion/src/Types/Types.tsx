@@ -10,6 +10,22 @@ export type rowProductType ={
     dataIndex: string,
     key: string,
   }
+export type columnUserType={
+    title:string,
+    dataIndex:string,
+    key:string,
+    render?:any
+}
+export type rowUserType={
+    name:string,
+    id:string,
+    email:string,
+    password:string,
+    phone:number,
+    role:string,
+    description:string,
+    image:string
+}
 
 
 

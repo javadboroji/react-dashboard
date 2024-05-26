@@ -18,7 +18,9 @@ export default {
       'blue-light':'#caf0f8',
       'black':'#023047',
       'wihte':'#fff',
-      'gray-bg':'#3a506b'
+      'gray-bg':'#3a506b',
+      'border-gray':'#f2f2f2',
+      'sucess-text':'rgb(58, 201, 119)'
     },
     fontFamily:{iranSans:'iranSans'}
   },

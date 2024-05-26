@@ -26,6 +26,11 @@ export type rowUserType={
     description:string,
     image:string
 }
-
+export type taskType={
+  id:string,
+  title:string,
+  done:boolean,
+  date:string
+}
 
 

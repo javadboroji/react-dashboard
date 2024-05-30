@@ -8,12 +8,16 @@ type ButtonsTypes = {
     backgeround?: string,
     padding?: string,
     fontSize?: string,
-    backgroundColor?: string
+    backgroundColor?: string,
+    eventHandler?:()=>any 
 };
 
 function Buttons(props: ButtonsTypes) {
     return (
-        <button style={{ backgroundColor: props.backgroundColor, fontSize: props.fontSize, borderRadius: props.rounded, color: props.color, border: '0', padding: props.padding }}> {props.text}</button>
+        <button
+         style={{ backgroundColor: props.backgroundColor, fontSize: props.fontSize, borderRadius: props.rounded, color: props.color, border: '0', padding: props.padding }}
+         onClick={props.eventHandler}
+         > {props.text}</button>
     );
 }
 

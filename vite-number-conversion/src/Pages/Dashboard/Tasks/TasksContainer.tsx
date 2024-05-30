@@ -1,63 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Buttons from '../../../Components/Buttons/Buttons'
 import { taskType } from '../../../Types/Types';
 import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Checkbox } from 'antd';
-
+import { Tasks } from './TasksContainer.data';
 import { Button } from 'antd';
+import CusModal from '../../../Components/LocalComponents/CusModal';
+import TaskModal from './Task.Modal';
 
 function TasksContainer() {
-    const Tasks: taskType[] = [
-        {
-            id: '012',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: true
-        },
-        {
-            id: 'ss',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: false
-        },
-        {
-            id: 'ww',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: false
-        },
-        {
-            id: 'as',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: true
-        },
-        {
-            id: '2e',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: false
-        },
-        {
-            id: 'dqad',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: false
-        },
-        {
-            id: 'xc',
-            title: " تکمیل کردن پروژه",
-            date: '1403/03/20',
-            done: false
-        }
-    ]
+    const [open, setOpen] = useState(false)
+  const addNewTask=()=>{
+   setOpen(true)
+  }
     return (
         <div className='flex flex-col w-2/6  shadow-lg rounded-md mt-3 p-2'>
             <div className='flex justify-between w-full p-3'>
                 <p className='text-base  text-orang-100'> لیست کارها</p>
                 <div>
-                    <Buttons text={'اضافه کردن'} fontSize={'12px'} backgroundColor='rgb(202, 240, 248)' />
+                    <Buttons eventHandler={addNewTask}  text={'اضافه کردن'} fontSize={'12px'} backgroundColor='rgb(202, 240, 248)' />
                 </div>
             </div>
             <div className='flex flex-col max-h-[23rem] overflow-y-auto'>
@@ -87,6 +49,9 @@ function TasksContainer() {
                     )
                 })}
             </div>
+            <CusModal open={open} setOpen={setOpen}>
+                <TaskModal/>
+            </CusModal>
         </div>
     )
 }

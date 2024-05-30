@@ -1,0 +1,10 @@
+.datePicker-input{
+    padding: 0.5rem;
+    border: 1px solid rgba(128, 128, 128, 0.363);
+    border-radius: 4px;
+}
+.date-picker-lable{
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+}

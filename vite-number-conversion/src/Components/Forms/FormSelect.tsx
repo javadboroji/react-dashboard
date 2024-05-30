@@ -11,7 +11,7 @@ type formSelectType={
   inputLable?:string
 }
 
-function FormSelect(props:formSelectType) {
+function  FormSelect(props:formSelectType) {
   const {defualtValue,options,style ,inputLable}=props
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
@@ -25,6 +25,9 @@ function FormSelect(props:formSelectType) {
       onChange={handleChange}
       options={options}
       className={style}
+      style={{
+        width:'100%'
+      }}
     />
     </div>
 

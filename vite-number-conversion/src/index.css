@@ -61,10 +61,12 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-.ant  -picker{
-  padding: 12px;
+.ant-picker,.ant-select-selector{
+  padding: 12px !important;
 }
-
+.ant-select-single{
+  height: 42px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

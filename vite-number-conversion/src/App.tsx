@@ -28,7 +28,8 @@ function App() {
             paddingInline:24,
             paddingBlock:24,
           
-          }
+          },
+      
         },
       }}
       >

@@ -3,7 +3,8 @@ export default {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  theme: {
+  theme:{
+  extend:{
     screens: {
       sm: '576px',
       md: '768px',
@@ -20,9 +21,13 @@ export default {
       'wihte':'#fff',
       'gray-bg':'#3a506b',
       'border-gray':'#f2f2f2',
-      'sucess-text':'rgb(58, 201, 119)'
+      'sucess-text':'rgb(58, 201, 119)',
+      'primary': '#0D99FF',
+      'dark':'#6e6e6e'
     },
     fontFamily:{iranSans:'iranSans'}
+  } 
+   
   },
   plugins: [],
 }

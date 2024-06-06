@@ -8,6 +8,7 @@ import UsersList from '../Pages/Users/UsersList';
 import Components from '../Pages/Components/Components';
 import Buttons from '../Components/Buttons/Buttons';
 import ButtonsCom from '../Pages/Components/Buttons/ButtonsCom';
+import FormsBas from '../Pages/Components/Forms/Forms.basic';
 function AdminRoute() {
     return (
         <div>
@@ -22,6 +23,7 @@ function AdminRoute() {
                         <Route path="/product" element={<Product />} />
                         <Route path="/users" element={< UsersList/>} />
                         <Route path="/buttons" element={<ButtonsCom />} />
+                        <Route path='/forms' element={<FormsBas/>}  />
                     </Routes>
                 </div>
 

@@ -107,7 +107,7 @@ function SideBar() {
             {/*<p className='text-wihte bg-black p-6 font-semibold text-2xl'>داشبورد</p>*/}
             <div className='flex flex-col'>
                 {dashBoardItems && dashBoardItems.map((menu) => (
-                    <>
+                    <div key={menu.id}>
                         <Link className='flex relative items-center text-wihte p-6 text-base font-medium mr-2' key={menu.id} to={menu.link}>
                             <span className='ml-4'>{menu.icon}</span>
                             <span>{menu.name}</span>
@@ -123,7 +123,7 @@ function SideBar() {
                                 </li>
                             ))}
                         </ul>}
-                    </>
+                    </div>
                 ))}
             </div>
         </div>

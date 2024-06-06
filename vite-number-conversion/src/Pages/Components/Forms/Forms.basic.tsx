@@ -39,6 +39,11 @@ function FormsBas() {
         console.log(data);
         
     }
+
+    const contact=(data:ContactInputs)=>{
+        console.log(data);
+        
+    }
   return (
     <Row className='w-full m-4 flex justify-between' gutter={0}>
       <Col xs={24} md={11} >
@@ -50,6 +55,10 @@ function FormsBas() {
       <span className='text-lg text-orang-100 p-2 text-center block'> فرم ورود  </span>
         <LoginForm loginHandler={login}/>
       </Col>
+      <Col  xs={24} md={11}>
+      <span className='text-lg text-orang-100 p-2 text-center block'> فرم تماس با ما  </span>
+        <ContactForm contactHandler={contact}/>
+      </Col>
     </Row>
   )
 }
@@ -57,8 +66,6 @@ function FormsBas() {
 export default FormsBas;
 
 const RegisterForm=(props:registerFormType)=>{
-
-    
     const {
         register,
         handleSubmit,
@@ -129,6 +136,42 @@ const LoginForm=(props:loginFormType)=>{
     )
 }
 
-const ContactForm=(props:)=>{
+const ContactForm=(props:contactFormType)=>{
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm<ContactInputs>()
 
+
+    return(
+        <form className='w-full p-12 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]' onSubmit={handleSubmit((data:ContactInputs)=>props.contactHandler(data)) }>
+        <Row gutter={[12,12]}>
+            <Col xs={12} >
+            <input  className='form-inp-cus' placeholder='نام کاربری' {...register('userName',{required:true})}/>
+            {errors.userName && <span className='text-red-600 text-sm p-2'> نام کاربری  اجباری است</span>}
+            </Col>
+            <Col xs={12} >
+            <input  className='form-inp-cus' placeholder='ایمیل' type='email' {...register('email',{required:true})}/>
+            {errors.email && <span className='text-red-600 text-sm p-2'> ایمیل   اجباری است</span>}
+            </Col>
+            <Col xs={24} >
+            <input  className='form-inp-cus' placeholder='موضوع'  {...register('title',{required:true})}/>
+            
+            </Col>
+            <Col xs={24} >
+            <textarea  className='form-inp-cus' placeholder='پیام'  {...register('message')}/>
+            
+            </Col>
+            <Col xs={24} md={24} className='flex items-center justify-center'>
+                
+                <BtnBasComponent basButtonsType='primary' btnTypeSubmit={true}  dyStyle={'text-white px-20 '} btnText='ارسال'  size='md' />
+            </Col>
+        </Row>
+    
+     
+        
+    </form>
+    )
 }

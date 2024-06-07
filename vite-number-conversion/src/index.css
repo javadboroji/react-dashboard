@@ -59,7 +59,7 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 0 auto -webkit-focus-ring-color;
 }
 .ant-picker,.ant-select-selector{
   padding: 12px !important;

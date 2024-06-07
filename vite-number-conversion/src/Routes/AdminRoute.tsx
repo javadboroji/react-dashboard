@@ -5,10 +5,10 @@ import Product from '../Pages/Product/Product';
 import HeaderLayout from '../Components/Header/HeaderLayout';
 import SideBar from '../Components/SideBar/SideBar';
 import UsersList from '../Pages/Users/UsersList';
-import Components from '../Pages/Components/Components';
 import Buttons from '../Components/Buttons/Buttons';
 import ButtonsCom from '../Pages/Components/Buttons/ButtonsCom';
 import FormsBas from '../Pages/Components/Forms/Forms.basic';
+import ModalBas from '../Pages/Components/Modals/Modal.basic';
 function AdminRoute() {
     return (
         <div>
@@ -24,6 +24,7 @@ function AdminRoute() {
                         <Route path="/users" element={< UsersList/>} />
                         <Route path="/buttons" element={<ButtonsCom />} />
                         <Route path='/forms' element={<FormsBas/>}  />
+                        <Route path='/modals' element={<ModalBas/>}  />
                     </Routes>
                 </div>
 

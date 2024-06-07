@@ -48,15 +48,22 @@ function FormsBas() {
     <Row className='w-full m-4 flex justify-between' gutter={0}>
       <Col xs={24} md={11} >
         <span className='text-lg text-orang-100 p-2 text-center block'> فرم ثبت نام  </span>
+        <span><span className='text-lg text-orang-100 p-2'> ComponentName:</span> RegisterForm</span><br/>
+        <span className='p-2  my-2 bg-gray-100 block my-8'> registerHandler (props):Form submit functionHandler </span>
          <RegisterForm registerHandler={register} />
 
       </Col>
       <Col xs={24} md={11}>
       <span className='text-lg text-orang-100 p-2 text-center block'> فرم ورود  </span>
+      <span><span className='text-lg text-orang-100 p-2'> ComponentName:</span> LoginForm</span><br/>
+      <span className='p-2  my-2 bg-gray-100 block my-8'> loginHandler(props) :Form submit functionHandler </span>
         <LoginForm loginHandler={login}/>
       </Col>
       <Col  xs={24} md={11}>
       <span className='text-lg text-orang-100 p-2 text-center block'> فرم تماس با ما  </span>
+      <span><span className='text-lg text-orang-100 p-2'> ComponentName:</span> ContactForm</span><br/>
+      <span className='p-2  my-2 bg-gray-100 block my-8'> ContactForm(props) :Form submit functionHandler </span>
+
         <ContactForm contactHandler={contact}/>
       </Col>
     </Row>

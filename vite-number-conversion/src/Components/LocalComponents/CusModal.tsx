@@ -7,8 +7,10 @@ type modalType = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   data?: JSX.Element,
   children?: React.ReactNode;
+  size?:string,
+  modalFooter?:any
 }
-function CusModal({ open,title, setOpen, data,children  }: modalType) {
+function CusModal({ open,title, setOpen, data,size,modalFooter, children  }: modalType) {
 
   const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -28,15 +30,15 @@ function CusModal({ open,title, setOpen, data,children  }: modalType) {
       <Modal
         title={title}
         open={open}
-        onOk={handleOk}
+        //onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
-        width={"70rem"}
-        okText={"ذخیره"}
+        width={size?size: "70rem"}
+        //okText={"ذخیره"}
         // okButtonProps={()=><Button></Button>}
         okType={"default"}
-        cancelText={"لغو"}
-      
+        //cancelText={"لغو"}
+      footer={modalFooter||[]}
       >
         {children }
       </Modal>

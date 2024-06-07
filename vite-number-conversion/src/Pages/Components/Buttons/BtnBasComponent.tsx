@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { CSSProperties } from 'react';
-import { CiBookmarkRemove } from "react-icons/ci";
 import './buttons.style.css'
 
 /*================== Type =================*/
@@ -10,7 +8,7 @@ type basButtons = {
     basButtonsType: string,
     outline?: boolean,
     btnText: string,
-    btnEvent?: () => any,
+    btnEvent?: () => void,
     dyStyle?:string,
     icon?: any,
     size?: string,
@@ -23,7 +21,7 @@ type basButtons = {
 
     const buttonBind = (bgColor: string, color?: string) => {
         setButtonReturn(<button type={`${props.btnTypeSubmit?'submit' :'button'}`} onClick={props.btnEvent}
-         className={` ${color?color:''} ${props.dyStyle?props.dyStyle:''} border-2 flex justify-center items-center mx-2 ${props.size==='sm'?'bas-btn-sm':props.size==='md'?'bas-btn-md':'bas-btn-lg'} ${props.outline ? ` border-${bgColor}` : `bg-${bgColor}  `}`}>
+         className={` ${color?color:''} ${props.dyStyle?props.dyStyle:''} border-2 flex justify-center items-center mx-2 ${props.size==='sm'?'bas-btn-sm':props.size==='md'?'bas-btn-md':'bas-btn-lg'} ${props.outline ? ` border-${bgColor} text-${bgColor}` : `bg-${bgColor}  `}`}>
              {props.icon}{props.btnText}
              </button>)
 

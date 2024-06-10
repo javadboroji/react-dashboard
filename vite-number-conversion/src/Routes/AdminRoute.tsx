@@ -9,6 +9,7 @@ import Buttons from '../Components/Buttons/Buttons';
 import ButtonsCom from '../Pages/Components/Buttons/ButtonsCom';
 import FormsBas from '../Pages/Components/Forms/Forms.basic';
 import ModalBas from '../Pages/Components/Modals/Modal.basic';
+import HeaderBasic from '../Pages/Components/Header/Header.basic';
 function AdminRoute() {
     return (
         <div>
@@ -25,6 +26,7 @@ function AdminRoute() {
                         <Route path="/buttons" element={<ButtonsCom />} />
                         <Route path='/forms' element={<FormsBas/>}  />
                         <Route path='/modals' element={<ModalBas/>}  />
+                        <Route path='/headers' element={<HeaderBasic/>}  />
                     </Routes>
                 </div>
 

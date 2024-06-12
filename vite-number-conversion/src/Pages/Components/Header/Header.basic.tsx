@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import NavbarWidthSearch from './NavbarWidthSearch'
+import NavbarWidthSearch from './NavbarWidthSearch';
+import { FaSignOutAlt } from "react-icons/fa";
+import { Button } from 'antd';
  export type  NavbarWidthSearchType={
     id:string,
     title:string,
@@ -31,7 +33,21 @@ function HeaderBasic() {
             id:'s-3',
             title:'خدمات',
             url:'/',
-        
+             hasNested:true,
+             nestedMenu:[
+                {
+                    id:'ss-1',
+                    title:'خدمات-1',
+                    url:'/',
+                
+                },
+                {
+                    id:'ss-2',
+                    title:'خدمات-2',
+                    url:'/',
+                
+                },
+             ]
         },
         {
             id:'s-4',
@@ -49,7 +65,7 @@ function HeaderBasic() {
     const [headerSearch, setHeaderSearch] = useState("")
   return (
     <div className='w-full'>
-        <NavbarWidthSearch menuList={menuList} headerLogo={headerLogo} setHeaderSearch={setHeaderSearch}/>
+        <NavbarWidthSearch menuList={menuList} headerLogo={headerLogo} setHeaderSearch={setHeaderSearch} boxShadow={true} fullWidth={true} leftBox={<Button className='border-0 shadow-none'><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button>}/>
     </div>
   )
 }

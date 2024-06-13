@@ -11,6 +11,7 @@ import FormsBas from '../Pages/Components/Forms/Forms.basic';
 import ModalBas from '../Pages/Components/Modals/Modal.basic';
 import HeaderBasic from '../Pages/Components/Header/Header.basic';
 import CardsBasic from '../Pages/Components/Cards/Cards.basic';
+import ToastBasic from '../Pages/Components/Toasts/Toast.Basic';
 function AdminRoute() {
     return (
         <div>
@@ -29,6 +30,7 @@ function AdminRoute() {
                         <Route path='/modals' element={<ModalBas/>}  />
                         <Route path='/headers' element={<HeaderBasic/>}  />
                         <Route path='/cards' element={<CardsBasic/>}  />
+                        <Route path='/toasts' element={<ToastBasic/>}  />
                     </Routes>
                 </div>
 

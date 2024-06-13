@@ -99,6 +99,11 @@ function SideBar() {
                 name: ' هدر ها',
                 link: '/headers',
             },
+            {
+                id: 'c6-7',
+                name: 'Toast',
+                link: '/Toasts',
+            },
             ]
         },
     ]

@@ -64,7 +64,7 @@ function HeaderBasic() {
     }  
     const [headerSearch, setHeaderSearch] = useState("")
   return (
-    <div className='w-full'>
+    <div className=' w-full'>
         <NavbarWidthSearch menuList={menuList} headerLogo={headerLogo} setHeaderSearch={setHeaderSearch} boxShadow={true} fullWidth={true} leftBox={<Button className='border-0 shadow-none'><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button>}/>
     </div>
   )

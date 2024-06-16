@@ -10,15 +10,18 @@ import { LoadingSpiner } from '../../Components/LocalComponents/LoadingSpiner.ts
 type FormValues = {
     firstName: string
     password: string | number
-    email: string
+    email: string,
+    setUserLogin:React.Dispatch<React.SetStateAction<boolean>>;
 }
-const LoginForm = ({ changeFormMode, setLoadingIs }: any) => {
+const LoginForm = ({ changeFormMode, setLoadingIs,setUserLogin }: any) => {
     const navgate = useNavigate()
     const [loading, setloading] = useState(false)
     const { register, formState: { errors }, handleSubmit } = useForm<FormValues>()
 
     const onSubmit: SubmitHandler<FormValues> =async (data) => {
-        setloading(true)
+        localStorage.setItem("userLoagin",JSON.stringify(true))
+        setloading(true);
+        setUserLogin(true)
       await  setTimeout(() => {
             navgate("/dashboard")
         }, 1000);

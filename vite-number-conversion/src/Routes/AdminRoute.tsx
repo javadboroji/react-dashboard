@@ -1,38 +1,61 @@
-import React from 'react'
+import React, { createContext, useEffect, useState,lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from '../Pages/Dashboard/Dashboard';
-import Product from '../Pages/Product/Product';
-import HeaderLayout from '../Components/Header/HeaderLayout';
+
+
+const LazyDashboard=lazy(()=>import('../Pages/Dashboard/Dashboard'))
+const LazyProduct=lazy(()=>import('../Pages/Product/Product'))
+const LazyHeaderLayout=lazy(()=>import('../Components/Header/HeaderLayout'))
+const LazySideBar=lazy(()=>import('../Components/SideBar/SideBar'))
+const LazyUsersList=lazy(()=>import('../Pages/Users/UsersList'))
+const LazyButtonsCom=lazy(()=>import('../Pages/Components/Buttons/ButtonsCom'))
+const LazyFormsBas=lazy(()=>import('../Pages/Components/Forms/Forms.basic'))
+const LazyModalBas=lazy(()=>import('../Pages/Components/Modals/Modal.basic'))
+const LazyHeaderBasic=lazy(()=>import('../Pages/Components/Header/Header.basic'))
+const LazyCardsBasic=lazy(()=>import('../Pages/Components/Cards/Cards.basic'))
+const LazyToastBasic=lazy(()=>import('../Pages/Components/Toasts/Toast.Basic'))
+const LazyLogin=lazy(()=>import('../Pages/Login/Login'))
+
+import { useAppContext } from '../Context/UserProvider';
 import SideBar from '../Components/SideBar/SideBar';
-import UsersList from '../Pages/Users/UsersList';
-import Buttons from '../Components/Buttons/Buttons';
-import ButtonsCom from '../Pages/Components/Buttons/ButtonsCom';
-import FormsBas from '../Pages/Components/Forms/Forms.basic';
-import ModalBas from '../Pages/Components/Modals/Modal.basic';
-import HeaderBasic from '../Pages/Components/Header/Header.basic';
-import CardsBasic from '../Pages/Components/Cards/Cards.basic';
-import ToastBasic from '../Pages/Components/Toasts/Toast.Basic';
+import HeaderLayout from '../Components/Header/HeaderLayout';
+import { Spin } from 'antd';
 function AdminRoute() {
+    const { userLogin, setUserLogin } = useAppContext()
+    useEffect(() => {
+
+    }, [userLogin])
     return (
         <div>
 
             <BrowserRouter>
+                {userLogin ?
+                    <>
+                        <HeaderLayout />
+                        <div className='flex'>
+                            <SideBar />
+                            <Suspense fallback={ <div className='min-w-full min-h-screen'><Spin size="small" /></div>}>
+                            <Routes>
 
-                <HeaderLayout />
-                <div className='flex'>
-                    <SideBar />
-                    <Routes>
-                        <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/product" element={<Product />} />
-                        <Route path="/users" element={< UsersList/>} />
-                        <Route path="/buttons" element={<ButtonsCom />} />
-                        <Route path='/forms' element={<FormsBas/>}  />
-                        <Route path='/modals' element={<ModalBas/>}  />
-                        <Route path='/headers' element={<HeaderBasic/>}  />
-                        <Route path='/cards' element={<CardsBasic/>}  />
-                        <Route path='/toasts' element={<ToastBasic/>}  />
-                    </Routes>
-                </div>
+                                <>
+                                    <Route path="/dashboard" element={<LazyDashboard />} />
+                                    <Route path="/product" element={<LazyProduct />} />
+                                    <Route path="/users" element={< LazyUsersList />} />
+                                    <Route path="/buttons" element={<LazyButtonsCom />} />
+                                    <Route path='/forms' element={<LazyFormsBas />} />
+                                    <Route path='/modals' element={<LazyModalBas />} />
+                                    <Route path='/headers' element={<LazyHeaderBasic />} />
+                                    <Route path='/cards' element={<LazyCardsBasic />} />
+                                    <Route path='/toasts' element={<LazyToastBasic />} />
+                                </>
+
+                            </Routes>
+                            </Suspense>
+
+                        </div>
+                    </>
+                    : <Routes><Route path="/" element={<LazyLogin setUserLogin={setUserLogin} />} /></Routes>
+
+                }
 
             </BrowserRouter>
 

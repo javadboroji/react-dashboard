@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { ConfigProvider, Layout,Input, InputProps } from 'antd';
 import styled from 'styled-components';
@@ -6,10 +6,13 @@ import fa_IR from "antd/es/locale/fa_IR";
 import locale from "antd/es/date-picker/locale/fa_IR";
 import AdminRoute from './Routes/AdminRoute.tsx';
 import dayjs from 'dayjs';
+import AuthRout from './Routes/AuthRout.tsx';
+import { AppProvider, useAppContext } from './Context/UserProvider.tsx';
 
 function App() {
   dayjs.locale('fa_IR');
-
+ 
+  
   return (
       <ConfigProvider 
       direction="rtl"
@@ -33,8 +36,9 @@ function App() {
         },
       }}
       >
-        
-        <AdminRoute/>
+        <AppProvider>
+          <AdminRoute/>
+        </AppProvider>
       </ConfigProvider>
   )
 }

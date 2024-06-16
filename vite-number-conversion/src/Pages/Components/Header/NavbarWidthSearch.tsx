@@ -8,7 +8,7 @@ type NavbarWidthSearchProps = {
     fullWidth?: boolean,
     menuFix?: boolean,
     leftBox?: any,
-    setHeaderSearch: React.Dispatch<React.SetStateAction<string>>
+    setHeaderSearch?: React.Dispatch<React.SetStateAction<string>>
 };
 const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerLogo, boxShadow, fullWidth, menuFix, leftBox }) => {
     const [showMwenu, setShowMwenu] = useState(false)
@@ -39,11 +39,11 @@ const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerL
 
                                 <li key={menu.id} className='group mb-4 h-full flex items-center md:mb-0 relative'>
                                     <Link to={menu.url} className="   block py-2 px-3  rounded md:bg-transparent text-blue-700 md:p-0 dark:text-blue-500" >{menu.title}</Link>
-                                    <ul className='absolute top-[100%] right-0 group-hover:flex flex-col  hidden shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-16 bg-blue-500 rounded-lg'>
+                                    <ul className='absolute w-fit min-w-36 top-[100%] right-0 group-hover:flex flex-col  hidden shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 bg-blue-500 rounded-lg'>
                                         {menu.nestedMenu?.map((item) => (
 
                                             <li key={item.id} className='mb-4 md:my-4'>
-                                                <Link to={item.url} className="block py-2 px-3  rounded md:bg-transparent text-white hover:text-wihte md:p-0 dark:text-blue-500" >{item.title}</Link>
+                                                <Link to={item.url} className="block whitespace-nowrap py-2 px-3  rounded md:bg-transparent text-white hover:text-wihte md:p-0 dark:text-blue-500" >{item.title}</Link>
                                             </li>
                                         ))}
                                     </ul>

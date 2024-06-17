@@ -69,13 +69,14 @@ type CardInitialType = AuthorCard & {
 }
 
 type ShoppCardProps = {
+    productId?:number
     orderImage: string,
     orderName: string,
     orderPrice: string|number,
     priceColor?:string,
     category?:string,
     rate?:RateType,
-    viewButton?:any
+    viewButtonFn?:any
 }
 const CardInitial: React.FC<CardInitialType> = ({ cardImage, title, description, textColor, date, userName, profile, dateColor, authorTextColor, boxShadow, category }) => {
 
@@ -136,7 +137,7 @@ const CardWidthTags: React.FC<CardInitialType> = ({ cardImage, title, descriptio
     )
 }
 
-export const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, orderPrice,priceColor,category,rate ,viewButton}) => {
+export const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, orderPrice,priceColor,category,rate ,viewButtonFn ,productId}) => {
     
     return (
         <Col xs={24} md={12} lg={8} xl={6}>
@@ -145,7 +146,8 @@ export const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, ord
                     <img className='w-full h-full  object-cover absolute group-hover:opacity-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' src={orderImage} alt={orderImage} />
                     {category&&<span className='text-white bg-orang-100 absolute top-4 z-10 rounded-lg px-2'> {category}</span>}
                     <div className='absolute opacity-0 group-hover:opacity-100   z-10 transition ease-in-out delay-150 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-100%] group-hover:translate-y-[-50%]'>
-                        {viewButton&&viewButton}
+                        
+                        <BtnBasComponent btnEvent={()=>viewButtonFn(productId)} basButtonsType='light' btnText='مشاهده' dyStyle='bg-wihte rounded-lg text-black px-9 my-4  transition ease-in-out delay-150 hover:bg-orang-100' size='sm'/>
                         <BtnBasComponent basButtonsType='light' btnText='خریدن' dyStyle='bg-wihte rounded-lg text-black px-9 my-4  transition ease-in-out delay-150 hover:bg-orang-100' size='sm'/>
                     </div>
                 </div>

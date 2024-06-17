@@ -1,29 +1,26 @@
-import React, { useState } from 'react'
-import { productsType, useGetAllProducts } from '../../Hooks';
-import { Row } from 'antd';
+import React, { lazy, Suspense, useState } from 'react'
+import { productsType, useGetAllProducts, useSingleProduct } from '../../Hooks';
+import { Row, Spin } from 'antd';
 import { ShoppCard } from '../Components/Cards/Cards.basic';
 import CusModal from '../../Components/LocalComponents/CusModal';
 import BtnBasComponent from '../Components/Buttons/BtnBasComponent';
-
+import SingleProduct from './SingleProduct';
+const LasySingleProduct=lazy(()=>import('./SingleProduct'))
 
 
 function Products() {
     const [open, setOpen] = useState(false);
-    const OpenViewProduct=()=>{
-        setOpen(true)
-    }
-    //*View Product  Button
-    const ViewButton =  <BtnBasComponent
-     btnEvent={OpenViewProduct}
-     basButtonsType='light'
-      btnText='مشاهده' 
-      dyStyle='bg-wihte rounded-lg text-black px-8 my-4 transition ease-in-out delay-150 hover:bg-orang-100' 
-      size='sm' />
 
-        
+
+    const OpenViewProduct=(prop:any)=>{
+        const productId=prop
+        setOpen(true);
+        mutate(productId)
+    }
    
     /*================================ Products Api ==============================*/
-    const { data, isLoading } = useGetAllProducts()
+    const { data, isLoading ,isSuccess} = useGetAllProducts()
+    const{mutate ,data:singleProduct}= useSingleProduct()
 
     return (
         <div className='container mx-auto mt-16 py-8'>
@@ -36,12 +33,16 @@ function Products() {
                        priceColor='text-orang-100'
                         category={product.category} 
                         rate={product.rating} 
-                        viewButton={ViewButton}
+                        viewButtonFn={OpenViewProduct}
+                        productId={product.id}
                         />
                 ))}
             </Row>
             <CusModal open={open} setOpen={setOpen}>
-                <p> product</p>
+                <Suspense fallback={<div className='min-w-full min-h-screen'><Spin size="large" /></div>}>
+                {/* <SingleProduct singleProductData={singleProduct?.data}/> */}
+                   {isSuccess&& <LasySingleProduct singleProductData={singleProduct?.data}/>}
+                </Suspense>
             </CusModal>
         </div>
     )

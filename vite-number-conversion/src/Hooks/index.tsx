@@ -1,6 +1,6 @@
 import { useQuery, QueryObserverResult, useMutation } from "@tanstack/react-query";
-import { GetAllProduct } from "../Api";
-import { Axios } from "axios";
+import { GetAllProduct, SingleProduct } from "../Api";
+import { Axios, AxiosResponse } from "axios";
 interface AxiosType{
     config:any,
     headers:any,
@@ -23,6 +23,9 @@ export type productsType={
 interface GetAllProductsType extends Axios{
 data:productsType[]
 }
+
+
+
 const useGetAllProducts = () => {
     return useQuery({
       queryKey: ['products'],
@@ -36,4 +39,18 @@ const useGetAllProducts = () => {
   
     );
   };
-  export{useGetAllProducts}
+  const useSingleProduct = () => {
+    return useMutation<AxiosResponse<productsType>, Error, any, string[]>({
+        mutationFn: SingleProduct,
+        onError: (error) => {
+          console.log(error);
+    
+        },
+        onSuccess: (data) => {
+          console.log(data);
+    
+        }
+      })
+  };
+
+  export{useGetAllProducts,useSingleProduct}

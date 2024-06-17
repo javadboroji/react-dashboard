@@ -8,7 +8,7 @@ type basButtons = {
     basButtonsType: string,
     outline?: boolean,
     btnText: string,
-    btnEvent?: () => void,
+    btnEvent?:any,
     dyStyle?:string,
     icon?: any,
     size?: string,
@@ -20,7 +20,7 @@ type basButtons = {
      const [buttonReturn, setButtonReturn] = useState<JSX.Element | null>(null);
 
     const buttonBind = (bgColor: string, color?: string) => {
-        setButtonReturn(<button type={`${props.btnTypeSubmit?'submit' :'button'}`} onClick={props.btnEvent}
+        setButtonReturn(<button type={`${props.btnTypeSubmit?'submit' :'button'}`} onClick={()=>props.btnEvent( )}
          className={` ${color?color:''} ${props.dyStyle?props.dyStyle:''} border-2 flex justify-center items-center mx-2 ${props.size==='sm'?'bas-btn-sm':props.size==='md'?'bas-btn-md':'bas-btn-lg'} ${props.outline ? ` border-${bgColor} text-${bgColor}` : `bg-${bgColor}  `}`}>
              {props.icon}{props.btnText}
              </button>)

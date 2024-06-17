@@ -8,7 +8,7 @@ type NavbarWidthSearchProps = {
     fullWidth?: boolean,
     menuFix?: boolean,
     leftBox?: any,
-    setHeaderSearch: React.Dispatch<React.SetStateAction<string>>
+    setHeaderSearch?: React.Dispatch<React.SetStateAction<string>>
 };
 const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerLogo, boxShadow, fullWidth, menuFix, leftBox }) => {
     const [showMwenu, setShowMwenu] = useState(false)
@@ -17,7 +17,7 @@ const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerL
     }
     return (
         <>
-            <nav className={` ${menuFix && 'fixed w-full top-0 left-0'} bg-white border-gray-200 dark:bg-gray-900 ${fullWidth ? 'px-8' : 'px-20 md:px-10 sm:px-0'} ${boxShadow && 'shadow-[0_3px_10px_rgb(0,0,0,0.2)]'}`}>
+            <nav className={` ${menuFix && 'fixed w-full top-0 left-0 z-50'} bg-white border-gray-200 dark:bg-gray-900 ${fullWidth ? 'px-8' : 'px-20 md:px-10 sm:px-0'} ${boxShadow && 'shadow-[0_3px_10px_rgb(0,0,0,0.2)]'}`}>
                 <div className=" w-full flex flex-wrap min-h-16 justify-between mx-auto ">
                     <Link to={headerLogo.homeUrl} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={headerLogo.logSrc} className="h-8" alt="Flowbite Logo" />
@@ -28,7 +28,7 @@ const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerL
                         <button onClick={openModal} data-collapse-toggle="navbar-search" type="button" className="inline-flex  p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
                             <span className="sr-only">Open main menu</span>
                             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                             </svg>
                         </button>
                     </div>
@@ -39,11 +39,11 @@ const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerL
 
                                 <li key={menu.id} className='group mb-4 h-full flex items-center md:mb-0 relative'>
                                     <Link to={menu.url} className="   block py-2 px-3  rounded md:bg-transparent text-blue-700 md:p-0 dark:text-blue-500" >{menu.title}</Link>
-                                    <ul className='absolute top-[100%] right-0 group-hover:flex flex-col  hidden shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-16 bg-blue-500 rounded-lg'>
+                                    <ul className='absolute w-fit min-w-36 top-[100%] right-0 group-hover:flex flex-col  hidden shadow-[0_3px_10px_rgb(0,0,0,0.2)] px-4 bg-blue-500 rounded-lg'>
                                         {menu.nestedMenu?.map((item) => (
 
                                             <li key={item.id} className='mb-4 md:my-4'>
-                                                <Link to={item.url} className="block py-2 px-3  rounded md:bg-transparent text-white hover:text-wihte md:p-0 dark:text-blue-500" >{item.title}</Link>
+                                                <Link to={item.url} className="block whitespace-nowrap py-2 px-3  rounded md:bg-transparent text-white hover:text-wihte md:p-0 dark:text-blue-500" >{item.title}</Link>
                                             </li>
                                         ))}
                                     </ul>

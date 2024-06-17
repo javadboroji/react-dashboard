@@ -6,6 +6,9 @@ import product from '../../../assets/product.jpg'
 import "./Card.Style.css"
 import { Link } from 'react-router-dom';
 import BtnBasComponent from '../Buttons/BtnBasComponent';
+import { RateType } from '../../../Hooks';
+import { IoIosStar } from "react-icons/io";
+
 function CardsBasic() {
     return (
         <div className='container p-6'>
@@ -68,9 +71,11 @@ type CardInitialType = AuthorCard & {
 type ShoppCardProps = {
     orderImage: string,
     orderName: string,
-    orderPrice: string,
+    orderPrice: string|number,
     priceColor?:string,
-    category?:string
+    category?:string,
+    rate?:RateType,
+    viewButton?:any
 }
 const CardInitial: React.FC<CardInitialType> = ({ cardImage, title, description, textColor, date, userName, profile, dateColor, authorTextColor, boxShadow, category }) => {
 
@@ -131,21 +136,25 @@ const CardWidthTags: React.FC<CardInitialType> = ({ cardImage, title, descriptio
     )
 }
 
-const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, orderPrice,priceColor,category }) => {
+export const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, orderPrice,priceColor,category,rate ,viewButton}) => {
+    
     return (
-        <Col xs={24} md={12} lg={6}>
-            <div className='w-full'>
+        <Col xs={24} md={12} lg={8} xl={6}>
+            <div className='w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg '>
                 <div className='group w-full relative pt-[75%] overflow-hidden rounded-lg'>
                     <img className='w-full h-full  object-cover absolute group-hover:opacity-50 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' src={orderImage} alt={orderImage} />
                     {category&&<span className='text-white bg-orang-100 absolute top-4 z-10 rounded-lg px-2'> {category}</span>}
                     <div className='absolute opacity-0 group-hover:opacity-100   z-10 transition ease-in-out delay-150 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-100%] group-hover:translate-y-[-50%]'>
-                        <BtnBasComponent basButtonsType='light' btnText='مشاهده' dyStyle='bg-wihte rounded-lg text-black px-8 my-4 transition ease-in-out delay-150 hover:bg-orang-100' size='sm'/>
+                        {viewButton&&viewButton}
                         <BtnBasComponent basButtonsType='light' btnText='خریدن' dyStyle='bg-wihte rounded-lg text-black px-9 my-4  transition ease-in-out delay-150 hover:bg-orang-100' size='sm'/>
                     </div>
                 </div>
                 <div className='flex flex-col px-4 py-2'>
-                    <span className='text-lg leading-7 py-2'>{orderName}</span>
-                    <span> قیمت : <span className={`${priceColor}`}>{orderPrice}  هزارتومان </span></span>
+                    <span className='text-lg leading-7 py-1 line-clamp-1 '>{orderName}</span>
+                    <div className='flex justify-between mb-2 mt-4'>
+                        <span> قیمت : <span className={`${priceColor}`}>{orderPrice}  هزارتومان </span></span>
+                        {rate&&<p className=' flex'>  <IoIosStar size={18} color='#ffd70047'/>  <span className='px-2 text-gray-400'>{rate.rate}</span></p>}
+                    </div>
                 </div>
             </div>
         </Col>

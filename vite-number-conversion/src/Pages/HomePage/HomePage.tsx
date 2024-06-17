@@ -5,6 +5,9 @@ import { Button } from 'antd'
 import { FaSignOutAlt } from 'react-icons/fa'
 import { useAppContext } from '../../Context/UserProvider'
 import { Link } from 'react-router-dom'
+import { useGetAllProducts } from '../../Hooks'
+import Product from '../Product/Product'
+import Products from './Products'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -45,7 +48,7 @@ function HomePage() {
 
                 },
                 {
-                    id: 'ss-3',
+                    id: 'ss-4',
                     title: 'زیور الات',
                     url: '/',
 
@@ -65,15 +68,20 @@ function HomePage() {
         siteName: 'فرانت کامپوننت',
         logSrc: 'https://flowbite.com/docs/images/logo.svg'
     }
-    const { userLogin } = useAppContext()
+    const { userLogin } = useAppContext();
+
+ 
+    
     return (
         <div>
             <div className=' w-full'>
-                <NavbarWidthSearch menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ? 
+                <NavbarWidthSearch menuFix menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ? 
                 <Button className='flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>خروج</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> :
                 <Button className=' flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>ورود</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> 
                 } />
             </div>
+            {/*============================== Products Cards==========================================*/   }
+            <Products/>
         </div>
     )
 }

@@ -46,10 +46,7 @@ const useGetAllProducts = () => {
           console.log(error);
     
         },
-        onSuccess: (data) => {
-          console.log(data);
-    
-        }
+     
       })
   };
 

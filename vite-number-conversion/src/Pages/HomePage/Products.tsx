@@ -39,10 +39,7 @@ function Products() {
                 ))}
             </Row>
             <CusModal open={open} setOpen={setOpen}>
-                <Suspense fallback={<div className='min-w-full min-h-screen'><Spin size="large" /></div>}>
-                {/* <SingleProduct singleProductData={singleProduct?.data}/> */}
-                   {isSuccess&& <LasySingleProduct singleProductData={singleProduct?.data}/>}
-                </Suspense>
+                   {isSuccess&& <SingleProduct singleProductData={singleProduct?.data}/>}
             </CusModal>
         </div>
     )

@@ -104,6 +104,11 @@ function SideBar() {
                 name: 'Toast',
                 link: '/Toasts',
             },
+            {
+                id: 'c6-7',
+                name: 'فوتر',
+                link: '/footers',
+            },
             ]
         },
     ]

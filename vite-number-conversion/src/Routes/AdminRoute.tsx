@@ -13,6 +13,7 @@ const LazyModalBas = lazy(() => import('../Pages/Components/Modals/Modal.basic')
 const LazyHeaderBasic = lazy(() => import('../Pages/Components/Header/Header.basic'))
 const LazyCardsBasic = lazy(() => import('../Pages/Components/Cards/Cards.basic'))
 const LazyToastBasic = lazy(() => import('../Pages/Components/Toasts/Toast.Basic'))
+const LazyFooter=lazy(()=>import("../Pages/Components/Footers/Footer.basic"))
 const LazyLogin = lazy(() => import('../Pages/Login/Login'))
 const LazyHome = lazy(() => import("../Pages/HomePage/HomePage"))
 import { useAppContext } from '../Context/UserProvider';
@@ -48,6 +49,7 @@ function AdminRoute() {
                                         <Route path='/headers' element={<LazyHeaderBasic />} />
                                         <Route path='/cards' element={<LazyCardsBasic />} />
                                         <Route path='/toasts' element={<LazyToastBasic />} />
+                                        <Route path='/footers' element={<LazyFooter/>} />
                                     </>
 
                                 </Routes>

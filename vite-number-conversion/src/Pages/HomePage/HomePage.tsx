@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Products from './Products'
 import { FaShoppingCart } from "react-icons/fa";
 import ShoppingCart from './ShoppingCart'
+import Footer from './Footer'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -65,7 +66,7 @@ function HomePage() {
     ]
     const headerLogo: menuSiteLogo = {
         homeUrl: '/',
-        siteName: 'فرانت کامپوننت',
+        siteName: 'وب سام',
         logSrc: 'https://flowbite.com/docs/images/logo.svg'
     }
 
@@ -100,6 +101,8 @@ function HomePage() {
             <Drawer title="Cart" onClose={onClose} open={open}>
                 <ShoppingCart />
             </Drawer>
+             {/*============================== Footer ==========================================*/}
+             <Footer/>
         </div>
     )
 }

@@ -5,7 +5,6 @@ import { IoIosStar } from 'react-icons/io'
 import BtnBasComponent from '../Components/Buttons/BtnBasComponent'
 import CounterProduct from './CounterProduct'
 export type SingleProductType = {
-
     category: string
     description: string
     id: number

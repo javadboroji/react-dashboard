@@ -1,5 +1,5 @@
 import { useQuery, QueryObserverResult, useMutation } from "@tanstack/react-query";
-import { GetAllProduct, SingleProduct } from "../Api";
+import { GetAllProduct, GetCartShop, SingleProduct } from "../Api";
 import { Axios, AxiosResponse } from "axios";
 interface AxiosType{
     config:any,
@@ -40,7 +40,7 @@ const useGetAllProducts = () => {
     );
   };
   const useSingleProduct = () => {
-    return useMutation<AxiosResponse<productsType>, Error, any, string[]>({
+    return useMutation<AxiosResponse<any>, Error, any, string[]>({
         mutationFn: SingleProduct,
         onError: (error) => {
           console.log(error);
@@ -49,5 +49,17 @@ const useGetAllProducts = () => {
      
       })
   };
-
-  export{useGetAllProducts,useSingleProduct}
+  const useGetCarts = () => {
+    return useQuery({
+      queryKey: ['Carts'],
+      queryFn: GetCartShop,
+      refetchOnWindowFocus: false,
+      select: (data: any) => {
+        let products = data?.data;
+        return products
+      }
+    }
+  
+    );
+  };
+  export{useGetAllProducts,useSingleProduct,useGetCarts}

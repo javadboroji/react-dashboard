@@ -2,14 +2,14 @@ import axios from "axios"
 import { strorBaseUrl } from "../env"
 
 const GetAllProduct=async()=>{
-    return await axios.get(`${strorBaseUrl}/products`,{
+    return await axios.get(`http://localhost:3000/api/getProducts`,{
         headers: {
             "accept": "application/json",
           },
     })
 }
-const SingleProduct=async(id:number)=>{
-    return await axios.get(`${strorBaseUrl}/products/${id}`,{
+const SingleProduct=async(id:string)=>{
+    return await axios.get(`http://localhost:3000/api/getSingleProduct?id=${id}`,{
         headers: {
             "accept": "application/json",
           },

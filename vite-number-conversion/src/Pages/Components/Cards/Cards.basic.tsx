@@ -143,7 +143,7 @@ export const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, ord
         <Col xs={24} md={12} lg={8} xl={6}>
             <div className='w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-lg '>
                 <div className='group w-full relative pt-[75%] overflow-hidden rounded-lg'>
-                    <img className='w-full h-full  object-cover absolute group-hover:opacity-35 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' src={orderImage} alt={orderImage} />
+                    <img className='w-full h-full  object-cover absolute group-hover:opacity-35 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' src={`data:image/jpeg;base64,${orderImage}`} alt={orderImage} />
                     {category&&<span className='text-white bg-orang-100 absolute top-4 z-10  rounded-lg px-2'> {category}</span>}
                     <div className='absolute opacity-0 group-hover:opacity-100   z-10 transition ease-in-out delay-150 top-[50%]  left-[50%] translate-x-[-50%] translate-y-[-100%] group-hover:translate-y-[-50%]'>
                         

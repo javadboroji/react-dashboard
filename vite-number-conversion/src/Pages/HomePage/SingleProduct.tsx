@@ -23,7 +23,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({ singleProductData }) => {
                 <Row gutter={[16, 16]} className='w-full py-8'>
                     <Col xs={24} lg={12}>
                         <div className=' w-full relative pt-[30%] md:pt-[60%] lg:pt-[90%] min-h-52 rounded-tl-lg rounded-tr-lg overflow-hidden'>
-                            <img className='w-full h-full object-contain absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' src={singleProductData?.image} alt={singleProductData?.image} />
+                            <img className='w-full h-full object-contain absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' src={`data:image/jpeg;base64,${singleProductData.image}`}alt={singleProductData?.image} />
                         </div>
                     </Col>
                     <Col xs={24} lg={12}>

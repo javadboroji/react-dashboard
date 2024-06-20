@@ -21,12 +21,13 @@ function Products() {
     /*================================ Products Api ==============================*/
     const { data, isLoading ,isSuccess} = useGetAllProducts()
     const{mutate ,data:singleProduct}= useSingleProduct()
-
+    console.log(data,'****');
+    
     return (
         <div className='container mx-auto mt-16 py-8'>
             <Row gutter={[24, 24]}>
-                {data && data.map((product: productsType) => (
-                    <ShoppCard key={product.id} 
+                {data && data?.map((product: productsType) => (
+                    <ShoppCard key={product._id} 
                     orderImage={product.image}
                      orderName={product.title}
                       orderPrice={product.price}
@@ -34,12 +35,12 @@ function Products() {
                         category={product.category} 
                         rate={product.rating} 
                         viewButtonFn={OpenViewProduct}
-                        productId={product.id}
+                        productId={product._id}
                         />
                 ))}
             </Row>
             <CusModal open={open} setOpen={setOpen}>
-                   {isSuccess&& <SingleProduct singleProductData={singleProduct?.data}/>}
+                   {isSuccess&& <SingleProduct singleProductData={singleProduct?.data?.data}/>}
             </CusModal>
         </div>
     )

@@ -4,7 +4,6 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme:{
-  extend:{
     screens: {
       sm: '576px',
       md: '768px',
@@ -12,6 +11,7 @@ export default {
       xl: '1200px',
       xxl: '1400px',
     },
+  extend:{
     colors:{
       'blue-50':'#48cae4 ',
       'Navy-blue':'#00406c',

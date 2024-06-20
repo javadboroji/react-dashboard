@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { menuSiteLogo, NavbarWidthSearchType } from '../Components/Header/Header.basic'
 import NavbarWidthSearch from '../Components/Header/NavbarWidthSearch'
-import { Button } from 'antd'
+import { Button, Drawer } from 'antd'
 import { FaSignOutAlt } from 'react-icons/fa'
 import { useAppContext } from '../../Context/UserProvider'
 import { Link } from 'react-router-dom'
-import { useGetAllProducts } from '../../Hooks'
-import Product from '../Product/Product'
 import Products from './Products'
+import { FaShoppingCart } from "react-icons/fa";
+import ShoppingCart from './ShoppingCart'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -68,20 +68,38 @@ function HomePage() {
         siteName: 'فرانت کامپوننت',
         logSrc: 'https://flowbite.com/docs/images/logo.svg'
     }
+
+
     const { userLogin } = useAppContext();
 
+    /*================================ Drawer ==============================*/
+    const [open, setOpen] = useState(false);
+    const showDrawer = () => {
+        setOpen(true);
+    };
+
+    const onClose = () => {
+        setOpen(false);
+    };
  
+  
     
     return (
         <div>
             <div className=' w-full'>
-                <NavbarWidthSearch menuFix menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ? 
-                <Button className='flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>خروج</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> :
-                <Button className=' flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>ورود</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> 
+                <NavbarWidthSearch menuFix menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ?
+                    <Button className='flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>خروج</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> :
+                    <>
+                        <Button onClick={showDrawer} className=' flex items-center border-0 shadow-none'> <FaShoppingCart size={24} color='rgb(29 78 216 )' /></Button>
+                        <Button className=' flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>ورود</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button>
+                    </>
                 } />
             </div>
-            {/*============================== Products Cards==========================================*/   }
-            <Products/>
+            {/*============================== Products Cards==========================================*/}
+            <Products />
+            <Drawer title="Cart" onClose={onClose} open={open}>
+                <ShoppingCart />
+            </Drawer>
         </div>
     )
 }

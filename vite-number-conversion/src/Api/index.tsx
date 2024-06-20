@@ -16,4 +16,12 @@ const SingleProduct=async(id:number)=>{
     })
 
 }
-export{GetAllProduct,SingleProduct}
+const GetCartShop=async()=>{
+    return await axios.get(`${strorBaseUrl}/carts`,{
+        headers: {
+            "accept": "application/json",
+          },
+    })
+
+}
+export{GetAllProduct,SingleProduct,GetCartShop}

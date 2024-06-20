@@ -49,16 +49,12 @@ const ShoppingCart=()=> {
 
 
     useEffect(() => {
-        giveProductCartInfo(data ,1)
       }, [data])
       
        useEffect(() => {
-        giveProductDetail(userProducts)
        }, [userProducts])
 
-        useEffect(() => {
-        console.log(singleProduct?.data);
-            
+        useEffect(() => {            
         setProducts((prev)=>[ ...prev,singleProduct?.data])
         
         }, [counter])

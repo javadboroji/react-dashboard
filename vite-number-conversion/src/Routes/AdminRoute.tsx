@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 const LazyDashboard = lazy(() => import('../Pages/Dashboard/Dashboard'))
-const LazyProduct = lazy(() => import('../Pages/Product/Product'))
+const LazyProduct = lazy(() => import('../Pages/Dashboard/Product/Product'))
 const LazyHeaderLayout = lazy(() => import('../Components/Header/HeaderLayout'))
 const LazySideBar = lazy(() => import('../Components/SideBar/SideBar'))
-const LazyUsersList = lazy(() => import('../Pages/Users/UsersList'))
+const LazyUsersList = lazy(() => import('../Pages/Dashboard/Users/UsersList'))
 const LazyButtonsCom = lazy(() => import('../Pages/Components/Buttons/ButtonsCom'))
 const LazyFormsBas = lazy(() => import('../Pages/Components/Forms/Forms.basic'))
 const LazyModalBas = lazy(() => import('../Pages/Components/Modals/Modal.basic'))

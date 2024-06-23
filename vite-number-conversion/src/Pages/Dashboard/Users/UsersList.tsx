@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import ActionsButtons from './ActionsButtons'
 import NewUserForm from './NewUserForm';
 import { Row } from 'antd';
-import CusGrid from '../../Components/LocalComponents/CusGrid';
-import { columnUserType } from '../../Types/Types';
-import userImageI from "../../../public/images/us-1.jpg";
-import userImageII from "../../../public/images/us-2.jpg";
-import userImageIII from "../../../public/images/us-3.jpg"
+import CusGrid from '../../../Components/LocalComponents/CusGrid';
+import { columnUserType } from '../../../Types/Types';
+import userImageI from "../../../../public/images/us-1.jpg";
+import userImageII from "../../../../public/images/us-2.jpg";
+import userImageIII from "../../../../public/images/us-3.jpg"
 function UsersList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {

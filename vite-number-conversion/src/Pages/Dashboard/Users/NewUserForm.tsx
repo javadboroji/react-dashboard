@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Col, Flex, Modal, Row } from 'antd';
-import FormText from '../../Components/Forms/FormText';
-import FormSelect from '../../Components/Forms/FormSelect';
-import CusModal from '../../Components/LocalComponents/CusModal';
+import FormText from '../../../Components/Forms/FormText';
+import FormSelect from '../../../Components/Forms/FormSelect';
+import CusModal from '../../../Components/LocalComponents/CusModal';
 
 type modalPrps = {
     isModalOpen: boolean,

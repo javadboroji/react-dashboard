@@ -1,11 +1,13 @@
 import React,{useState} from 'react'
-import CusGrid from '../../Components/LocalComponents/CusGrid'
+import CusGrid from '../../../Components/LocalComponents/CusGrid'
 import { CiCirclePlus } from "react-icons/ci";
 import { Button, TableProps } from 'antd';
-import { columnProductType, rowProductType } from '../../Types/Types';
+import { columnProductType, rowProductType } from '../../../Types/Types';
+import CusModal from '../../../Components/LocalComponents/CusModal';
+import NewProductForm from './NewProductForm';
 
 function Product() {
-
+  const [open, setOpen] = useState(false);
   const data: rowProductType[] = [
       {
         key: '1',
@@ -55,15 +57,21 @@ function Product() {
       
   
     ];
+    const openModal=()=>{
+      setOpen(true)
+    }
   return (
     <div className='flex flex-col flex-1'>
       <div className='flex justify-between mx-4 items-center'>
       <h1 className='text-orang-100 text-3xl py-4'>محصولات</h1>
-     <Button style={{background:'transparent' ,boxShadow:'none' ,color:'blue'}}>
+     <Button onClick={openModal} style={{background:'transparent' ,boxShadow:'none' ,color:'blue'}}>
       افزودن
      </Button>
       </div>
       <CusGrid data={data} columns={columns} modal={true} modaltitle={'محصولات'}/>
+      <CusModal open={open} setOpen={setOpen}>
+                    <NewProductForm/>
+            </CusModal>
     </div>
   )
 }

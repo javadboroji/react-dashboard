@@ -86,7 +86,7 @@ function HomePage() {
   
     
     return (
-        <div>
+        <div className='flex flex-col justify-between min-h-[100dvh]'>
             <div className=' w-full'>
                 <NavbarWidthSearch menuFix menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ?
                     <Button className='flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>خروج</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> :

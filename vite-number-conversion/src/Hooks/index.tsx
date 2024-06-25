@@ -14,7 +14,7 @@ export type RateType={
 export type productsType={
     category :string
     description: string
-    id:number
+    _id:number
     image : string
     price : number
     rating : RateType
@@ -32,7 +32,7 @@ const useGetAllProducts = () => {
       queryFn: GetAllProduct,
       refetchOnWindowFocus: false,
       select: (data: any) => {
-        let products = data?.data;
+        let products = data?.data?.data;
         return products
       }
     }
@@ -62,16 +62,4 @@ const useGetAllProducts = () => {
   
     );
   };
-
-
-  const addNewProduct=()=>{
-    return useMutation<AxiosResponse<any>, Error, any, string[]>({
-      mutationFn: SingleProduct,
-      onError: (error) => {
-        console.log(error);
-  
-      },
-   
-    })
-  }
   export{useGetAllProducts,useSingleProduct,useGetCarts}

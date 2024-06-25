@@ -2,14 +2,14 @@ import axios from "axios"
 import { strorBaseUrl } from "../env"
 
 const GetAllProduct=async()=>{
-    return await axios.get(`${strorBaseUrl}/products`,{
+    return await axios.get(`http://localhost:3000/api/getProducts`,{
         headers: {
             "accept": "application/json",
           },
     })
 }
-const SingleProduct=async(id:number)=>{
-    return await axios.get(`${strorBaseUrl}/products/${id}`,{
+const SingleProduct=async(id:string)=>{
+    return await axios.get(`http://localhost:3000/api/getSingleProduct?id=${id}`,{
         headers: {
             "accept": "application/json",
           },
@@ -24,13 +24,4 @@ const GetCartShop=async()=>{
     })
 
 }
-const addNewProduct=async()=>{
-    return await axios.get(`${strorBaseUrl}/addNewProduct`,{
-        headers: {
-            "content-type": "multipart/form-data",
-
-          },
-    })
-
-}
-export{GetAllProduct,SingleProduct,GetCartShop,addNewProduct}
+export{GetAllProduct,SingleProduct,GetCartShop}

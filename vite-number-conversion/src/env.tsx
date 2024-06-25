@@ -1,0 +1,1 @@
+export const strorBaseUrl="https://fakestoreapi.com"

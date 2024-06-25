@@ -8,7 +8,7 @@ type basButtons = {
     basButtonsType: string,
     outline?: boolean,
     btnText: string,
-    btnEvent?: () => void,
+    btnEvent?:any,
     dyStyle?:string,
     icon?: any,
     size?: string,

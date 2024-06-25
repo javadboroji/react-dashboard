@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 type ButtonsTypes = {
     text: string,
     color?: string,
-    rounded?: number,
+    rounded?: string,
     backgeround?: string,
     padding?: string,
     fontSize?: string,

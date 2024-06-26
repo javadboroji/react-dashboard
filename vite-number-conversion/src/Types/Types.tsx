@@ -9,6 +9,7 @@ export type rowProductType ={
     title:string,
     dataIndex: string,
     key: string,
+    render?:(record:any)=>void
   }
 export type columnUserType={
     title:string,

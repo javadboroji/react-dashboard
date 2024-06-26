@@ -21,8 +21,6 @@ function Products() {
     /*================================ Products Api ==============================*/
     const { data, isLoading ,isSuccess} = useGetAllProducts()
     const{mutate ,data:singleProduct}= useSingleProduct()
-    console.log(data,'****');
-    
     return (
         <div className='container mx-auto mt-16 py-8'>
             <Row gutter={[24, 24]}>

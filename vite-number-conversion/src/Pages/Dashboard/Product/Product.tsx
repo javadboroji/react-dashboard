@@ -5,9 +5,14 @@ import { Button, TableProps } from 'antd';
 import { columnProductType, rowProductType } from '../../../Types/Types';
 import CusModal from '../../../Components/LocalComponents/CusModal';
 import NewProductForm from './NewProductForm';
+import { useGetAllProducts } from '../../../Hooks';
+import { render } from 'react-dom';
 
 function Product() {
   const [open, setOpen] = useState(false);
+  /*================== Products =================*/
+  const{data:rows}= useGetAllProducts()
+  
   const data: rowProductType[] = [
       {
         key: '1',
@@ -34,20 +39,24 @@ function Product() {
     ];
     const columns: columnProductType[]  = [
       {
+        title: 'تصویرمحصول',
+        dataIndex: 'image',
+        key: 'image',
+        render:(render)=>{          
+          return <img width={'80px'} height={'80px'} src={`../../../../public/file/${render}`} alt={render.toString()}/>
+        }
+      },
+      {
         title: 'نام',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'title',
+        key: 'title',
       },
       {
         title: 'دسته بندی',
         dataIndex: 'category',
         key: 'category',
       },
-      {
-        title: 'تعداد',
-        dataIndex: 'count',
-        key: 'count',
-      },
+      
       {
         title: 'قیمت',
         key: 'price',
@@ -68,10 +77,10 @@ function Product() {
       افزودن
      </Button>
       </div>
-      <CusGrid data={data} columns={columns} modal={true} modaltitle={'محصولات'}/>
+      <CusGrid data={rows} columns={columns} modal={true} modaltitle={'محصولات'}/>
       <CusModal open={open} setOpen={setOpen}>
                     <NewProductForm/>
-            </CusModal>
+        </CusModal>
     </div>
   )
 }

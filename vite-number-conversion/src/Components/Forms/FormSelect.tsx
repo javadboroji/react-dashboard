@@ -8,7 +8,8 @@ type formSelectType={
   defualtValue?:string,
   options:selectInputType[],
   style?:string,
-  inputLable?:string
+  inputLable?:string,
+  inpName?:string
 }
 
 function  FormSelect(props:formSelectType) {

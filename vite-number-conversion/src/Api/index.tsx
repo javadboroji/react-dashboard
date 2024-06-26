@@ -24,4 +24,12 @@ const GetCartShop=async()=>{
     })
 
 }
-export{GetAllProduct,SingleProduct,GetCartShop}
+
+const addNewProduct=async(body:any)=>{
+    return await axios.post(`http://localhost:3000/api/addNewProduct`,body,{
+        headers: {
+            "Content-Type": "multipart/form-data"
+          },
+    })
+}
+export{GetAllProduct,SingleProduct,GetCartShop,addNewProduct}

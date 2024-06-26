@@ -11,6 +11,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify';
 function App() {
   dayjs.locale('fa_IR');
   const queryClient = new QueryClient()
@@ -43,7 +44,7 @@ function App() {
         <AppProvider>
           <AdminRoute />
         </AppProvider>
-
+        <ToastContainer rtl />
       </QueryClientProvider>
     </ConfigProvider>
   )

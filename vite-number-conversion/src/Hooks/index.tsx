@@ -1,6 +1,7 @@
 import { useQuery, QueryObserverResult, useMutation } from "@tanstack/react-query";
-import { GetAllProduct, GetCartShop, SingleProduct } from "../Api";
+import { addNewProduct, GetAllProduct, GetCartShop, SingleProduct } from "../Api";
 import { Axios, AxiosResponse } from "axios";
+import { ToastFn } from "../Pages/Dashboard/Product/NewProductForm";
 interface AxiosType{
     config:any,
     headers:any,
@@ -62,4 +63,17 @@ const useGetAllProducts = () => {
   
     );
   };
-  export{useGetAllProducts,useSingleProduct,useGetCarts}
+//addNewProduct
+  const useAddNewProduct=(notify:ToastFn)=>{
+    
+    return useMutation<AxiosResponse<any>, Error, any, string[]>({
+      mutationFn: addNewProduct,
+      onSuccess:()=>notify(),
+      onError: (error) => {
+        console.log(error);
+  
+      },
+   
+    })
+  }
+  export{useGetAllProducts,useSingleProduct,useGetCarts,useAddNewProduct}

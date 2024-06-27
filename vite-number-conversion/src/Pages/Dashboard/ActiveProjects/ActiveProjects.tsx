@@ -1,7 +1,6 @@
 import React from 'react'
-import CusGrid from '../../../Components/LocalComponents/CusGrid'
 import { activeProjectCol, activeProjectData } from './ActiveProject.data'
-import TableCus from '../../../Components/LocalComponents/TableCus'
+import TableCus from '../../../DyComponents/LocalComponents/TableCus'
 
 function ActiveProjects() {
 

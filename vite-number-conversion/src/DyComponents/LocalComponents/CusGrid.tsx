@@ -14,12 +14,14 @@ type DataType = {
   data: rowProductType[],
   columns: columnProductType[],
   modal?: boolean,
-  modaltitle?: string
+  modaltitle?: string,
+  deleteApi?:any
 }
-const CusGrid: React.FC<DataType> = ({ data, columns, modal, modaltitle }) => {
+const CusGrid: React.FC<DataType> = ({ data, columns, modal, modaltitle ,deleteApi }) => {
   //modal state
   const [open, setOpen] = useState(false);
   const [rowSelect, setRowSelect] = useState<rowProductType>({
+    _id:"",
     key: "",
     name: "",
     category: "",
@@ -49,10 +51,9 @@ const CusGrid: React.FC<DataType> = ({ data, columns, modal, modaltitle }) => {
     title: 'عملیات',
     key: 'action',
     dataIndex: 'action  ',
-    render: () => (
+    render: (render:any) => (
       <>
-        <Button type-btn="edit" onClick={() => setOpen(true)}> ویرایش</Button>
-        <Button type-btn="delete"> حذف</Button>
+        <Button type-btn="edit" onClick={() => setOpen(true)}> ویرایش</Button>{deleteApi&&<Button onClick={()=>deleteApi(rowSelect._id)} type-btn="delete"> حذف</Button>}
       </>
     )
   }]

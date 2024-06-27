@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Col } from "antd";
 import { Button } from 'antd';
 import loginImage from '../../../public/images/20944201.jpg'
-import { LoadingSpiner } from '../../Components/LocalComponents/LoadingSpiner.tsx';
+import { LoadingSpiner } from '../../DyComponents/LocalComponents/LoadingSpiner.tsx';
 import LoginForm from './LoginForm.tsx';
 import RegisterForm from './RegisterForm.tsx';
 import { useAppContext } from '../../Context/UserProvider.tsx';

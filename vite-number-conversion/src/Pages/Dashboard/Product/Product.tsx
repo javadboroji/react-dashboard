@@ -1,49 +1,37 @@
 import React,{useState} from 'react'
-import CusGrid from '../../../Components/LocalComponents/CusGrid'
+import CusGrid from '../../../DyComponents/LocalComponents/CusGrid'
 import { CiCirclePlus } from "react-icons/ci";
 import { Button, TableProps } from 'antd';
 import { columnProductType, rowProductType } from '../../../Types/Types';
-import CusModal from '../../../Components/LocalComponents/CusModal';
+import CusModal from '../../../DyComponents/LocalComponents/CusModal';
 import NewProductForm from './NewProductForm';
-import { useGetAllProducts } from '../../../Hooks';
-import { render } from 'react-dom';
+import { useDeleteProduct, useGetAllProducts } from '../../../Hooks';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Product() {
   const [open, setOpen] = useState(false);
   /*================== Products =================*/
+  
+  const notify = () => {
+    toast.success("با موفقیت انجام شد!", {
+        position: "bottom-right"
+    });
+
+}
   const{data:rows}= useGetAllProducts()
   
-  const data: rowProductType[] = [
-      {
-        key: '1',
-        name: 'محصول',
-        category: 'لباس',
-        count: 12,
-        price: 15000000,
-      },
-      {
-        key: '2',
-        name: '2محصول',
-        category: 'لباس',
-        count: 10,
-        price: 18000000,
-      },
-      {
-        key: '3',
-        name: '3محصول',
-        category: 'لباس',
-        count: 15,
-        price: 19000000,
-      },
-  
-    ];
+/*================== Delete Product api =================*/
+ const{mutate}= useDeleteProduct(notify)
+
     const columns: columnProductType[]  = [
       {
         title: 'تصویرمحصول',
         dataIndex: 'image',
         key: 'image',
         render:(render)=>{          
-          return <img width={'80px'} height={'80px'} src={`../../../../public/file/${render}`} alt={render.toString()}/>
+          return <img width={'60px'} height={'50px'} src={`../../../../public/file/${render}`} alt={render.toString()}/>
         }
       },
       {
@@ -77,10 +65,12 @@ function Product() {
       افزودن
      </Button>
       </div>
-      <CusGrid data={rows} columns={columns} modal={true} modaltitle={'محصولات'}/>
+      <CusGrid deleteApi={mutate} data={rows} columns={columns} modal={true} modaltitle={'محصولات'}/>
       <CusModal open={open} setOpen={setOpen}>
                     <NewProductForm/>
         </CusModal>
+        <ToastContainer rtl />
+
     </div>
   )
 }

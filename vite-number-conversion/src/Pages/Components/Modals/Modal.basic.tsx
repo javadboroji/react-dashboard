@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import BtnBasComponent from '../Buttons/BtnBasComponent'
-import CusModal from '../../../Components/LocalComponents/CusModal';
+import CusModal from '../../../DyComponents/LocalComponents/CusModal';
 
 function ModalBas() {
     const [open, setOpen] = useState(false)

@@ -2,29 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { Col } from "antd";
 import { Button } from 'antd';
 import { useForm, SubmitHandler } from "react-hook-form"
-import Buttons from '../../Components/Buttons/Buttons.tsx';
+import Buttons from '../../DyComponents/Buttons/Buttons.tsx';
 import { useNavigate } from 'react-router-dom';
 import loginImage from '../../../public/images/20944201.jpg'
-import { LoadingSpiner } from '../../Components/LocalComponents/LoadingSpiner.tsx';
+import { LoadingSpiner } from '../../DyComponents/LocalComponents/LoadingSpiner.tsx';
 
-type FormValues = {
-    firstName: string
+export type FormValues = {
+    userName: string
     password: string | number
     email: string,
     setUserLogin:React.Dispatch<React.SetStateAction<boolean>>;
 }
 const LoginForm = ({ changeFormMode, setLoadingIs,setUserLogin }: any) => {
+
+
+
     const navgate = useNavigate()
     const [loading, setloading] = useState(false)
     const { register, formState: { errors }, handleSubmit } = useForm<FormValues>()
-
+    /*================== =Login submit =================*/
+     
+    
     const onSubmit: SubmitHandler<FormValues> =async (data) => {
         localStorage.setItem("userLoagin",JSON.stringify(true))
+        console.log(data,'****');
+        
         setloading(true);
         setUserLogin(true)
-      await  setTimeout(() => {
-            navgate("/dashboard")
-        }, 1000);
+    //   await  setTimeout(() => {
+    //         navgate("/dashboard")
+    //     }, 1000);
     }
 
     useEffect(() => {
@@ -44,8 +51,8 @@ const LoginForm = ({ changeFormMode, setLoadingIs,setUserLogin }: any) => {
                     </div>
                     <div className={'flex items-center shadow-lg rounded-2xl p-8'}>
                         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-1/2'>
-                            <input placeholder='نام ' {...register("firstName", { required: true })} className='border px-6 py-2 my-4 rounded-lg' />
-                            {errors.firstName?.type === 'required' && <p role="alert" className='text-orang-100'> نام  اجباری می باشد </p>}
+                            <input placeholder='نام ' {...register("userName", { required: true })} className='border px-6 py-2 my-4 rounded-lg' />
+                            {errors.userName?.type === 'required' && <p role="alert" className='text-orang-100'> نام  اجباری می باشد </p>}
                             <input placeholder='ایمیل' type="email" {...register("email", { required: true })} className='border px-6  py-2 my-4 rounded-lg' />
                             {errors.email?.type === 'required' && <p role="alert" className='text-orang-100'> ایمیل  اجباری می باشد </p>}
                             <input placeholder='پسورد' type="password" {...register("password", { required: true })} className='border px-6  py-2 my-4 rounded-lg' />

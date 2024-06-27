@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Buttons from '../../../Components/Buttons/Buttons'
+import Buttons from '../../../DyComponents/Buttons/Buttons'
 import { taskType } from '../../../Types/Types';
 import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Checkbox } from 'antd';
 import { Tasks } from './TasksContainer.data';
 import { Button } from 'antd';
-import CusModal from '../../../Components/LocalComponents/CusModal';
+import CusModal from '../../../DyComponents/LocalComponents/CusModal';
 import TaskModal from './Task.Modal';
 
 function TasksContainer() {

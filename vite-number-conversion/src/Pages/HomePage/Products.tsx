@@ -2,10 +2,8 @@ import React, { lazy, Suspense, useState } from 'react'
 import { productsType, useGetAllProducts, useSingleProduct } from '../../Hooks';
 import { Row, Spin } from 'antd';
 import { ShoppCard } from '../Components/Cards/Cards.basic';
-import CusModal from '../../Components/LocalComponents/CusModal';
-import BtnBasComponent from '../Components/Buttons/BtnBasComponent';
+import CusModal from '../../DyComponents/LocalComponents/CusModal';
 import SingleProduct from './SingleProduct';
-const LasySingleProduct=lazy(()=>import('./SingleProduct'))
 
 
 function Products() {

@@ -1,9 +1,9 @@
 import { Col, Flex, Form, Row } from 'antd'
 import React from 'react'
-import FormText from '../../../Components/Forms/FormText'
-import FormDate from '../../../Components/Forms/FormDate'
+import FormText from '../../../DyComponents/Forms/FormText'
+import FormDate from '../../../DyComponents/Forms/FormDate'
 import { Content } from 'antd/es/layout/layout'
-import FormSelect from '../../../Components/Forms/FormSelect'
+import FormSelect from '../../../DyComponents/Forms/FormSelect'
 
 function TaskModal() {
     const taskOption=[ {

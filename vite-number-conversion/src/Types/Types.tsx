@@ -1,4 +1,5 @@
 export type rowProductType ={
+  _id:string,
     key: string;
     name: string;
     category: string;
@@ -9,7 +10,7 @@ export type rowProductType ={
     title:string,
     dataIndex: string,
     key: string,
-    render?:(record:any)=>void
+    render?:(props:any)=>any
   }
 export type columnUserType={
     title:string,
@@ -33,5 +34,8 @@ export type taskType={
   done:boolean,
   date:string
 }
-
+export type personLogin={
+  userName:string,
+  password:string
+}
 

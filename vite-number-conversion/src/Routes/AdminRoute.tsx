@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const LazyDashboard = lazy(() => import('../Pages/Dashboard/Dashboard'))
 const LazyProduct = lazy(() => import('../Pages/Dashboard/Product/Product'))
-const LazyHeaderLayout = lazy(() => import('../Components/Header/HeaderLayout'))
-const LazySideBar = lazy(() => import('../Components/SideBar/SideBar'))
+const LazyHeaderLayout = lazy(() => import('../DyComponents/Header/HeaderLayout'))
+const LazySideBar = lazy(() => import('../DyComponents/SideBar/SideBar'))
 const LazyUsersList = lazy(() => import('../Pages/Dashboard/Users/UsersList'))
 const LazyButtonsCom = lazy(() => import('../Pages/Components/Buttons/ButtonsCom'))
 const LazyFormsBas = lazy(() => import('../Pages/Components/Forms/Forms.basic'))
@@ -17,8 +17,8 @@ const LazyFooter=lazy(()=>import("../Pages/Components/Footers/Footer.basic"))
 const LazyLogin = lazy(() => import('../Pages/Login/Login'))
 const LazyHome = lazy(() => import("../Pages/HomePage/HomePage"))
 import { useAppContext } from '../Context/UserProvider';
-import SideBar from '../Components/SideBar/SideBar';
-import HeaderLayout from '../Components/Header/HeaderLayout';
+import SideBar from '../DyComponents/SideBar/SideBar';
+import HeaderLayout from '../DyComponents/Header/HeaderLayout';
 import { Spin } from 'antd';
 import HomePage from '../Pages/HomePage/HomePage';
 import Login from '../Pages/Login/Login';
@@ -27,12 +27,11 @@ function AdminRoute() {
     useEffect(() => {
 
     }, [userLogin])
-    const flag=true
     return (
         <div>
 
             <BrowserRouter>
-                {flag ?
+                {userLogin ?
                     <>
                         <HeaderLayout />
                         <div className='flex'>
@@ -49,7 +48,7 @@ function AdminRoute() {
                                         <Route path='/modals' element={<LazyModalBas />} />
                                         <Route path='/headers' element={<LazyHeaderBasic />} />
                                         <Route path='/cards' element={<LazyCardsBasic />} />
-                                        <Route path='/toasts' element={<LazyToastBasic />} />
+                                        {/* <Route path='/toasts' element={<LazyToastBasic />} /> */}
                                         <Route path='/footers' element={<LazyFooter/>} />
                                     </>
 

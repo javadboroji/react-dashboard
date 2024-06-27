@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ActionsButtons from './ActionsButtons'
 import NewUserForm from './NewUserForm';
 import { Row } from 'antd';
-import CusGrid from '../../../Components/LocalComponents/CusGrid';
+import CusGrid from '../../../DyComponents/LocalComponents/CusGrid';
 import { columnUserType } from '../../../Types/Types';
 import userImageI from "../../../../public/images/us-1.jpg";
 import userImageII from "../../../../public/images/us-2.jpg";

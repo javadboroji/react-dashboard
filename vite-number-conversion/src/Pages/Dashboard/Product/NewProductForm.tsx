@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from 'antd'
 import React, { ChangeEventHandler, useState } from 'react'
-import FormText from '../../../Components/Forms/FormText'
-import FormSelect from '../../../Components/Forms/FormSelect'
+import FormText from '../../../DyComponents/Forms/FormText';
+import FormSelect from '../../../DyComponents/Forms/FormSelect'
 import { FaUpload } from "react-icons/fa6";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useAddNewProduct } from '../../../Hooks';
@@ -15,8 +15,9 @@ type FieldType = {
     category: string,
     description: string
 }
+
 export type ToastFn=()=>void
-function NewProductForm() {
+const NewProductForm=()=> {
     const categoryes = [{ lable: 'cloth', value: 'لباس' },
     { lable: 'glass', value: 'عینک' },
     { lable: 'watch', value: 'ساعت' },
@@ -48,7 +49,8 @@ function NewProductForm() {
     }
     /*================== Submit Form =================*/
     const{mutate}= useAddNewProduct(notify)
-    const { register, handleSubmit } = useForm<FieldType>()
+    const { register, handleSubmit } = useForm<FieldType>({
+    })
     const onSubmit: SubmitHandler<FieldType> = (data) =>{
         const formData=new FormData;
         const reader = new FileReader();
@@ -61,21 +63,16 @@ function NewProductForm() {
             formData.append("src",file);
 
         }
-       // logFormData(formData)
        mutate(formData);
     }
-    // const logFormData = (formData:any) => {
-    //     for (let pair of formData.entries()) {
-    //       console.log(pair[0], pair[1]);
-    //     }
-    //   };
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Row gutter={[8, 8]} className='my-8'>
 
 
-                <Col xs={24} lg={8}>     <input placeholder='عنوان' {...register("title", { required: true })} /></Col>
+                <Col xs={24} lg={8}>   <input placeholder='عنوان' {...register("title", { required: true })} /></Col>
                 <Col xs={24} lg={8}>  <input placeholder='قیمت' type="number"  {...register("price", { required: true })} /></Col>
                 <Col xs={24} lg={8}> 
                   {/* <label>دسته بندی </label> */}

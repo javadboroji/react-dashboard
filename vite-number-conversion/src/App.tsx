@@ -4,6 +4,8 @@ import fa_IR from "antd/es/locale/fa_IR";
 import AdminRoute from './Routes/AdminRoute.tsx';
 import dayjs from 'dayjs';
 import { AppProvider } from './Context/UserProvider.tsx';
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   useQuery,
   useMutation,

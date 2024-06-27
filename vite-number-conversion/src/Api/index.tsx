@@ -9,6 +9,13 @@ const userRegisterApi=async(body:personLogin)=>{
           },
     })
 }
+const userLoginApi=async(body:personLogin)=>{
+    return await axios.post(`http://localhost:3000/api/login`,body,{
+        headers: {
+            "accept": "application/json",
+          },
+    })
+}
 const GetAllProduct=async()=>{
     return await axios.get(`http://localhost:3000/api/getProducts`,{
         headers: {
@@ -49,4 +56,4 @@ const removeProduct=async(id:string)=>{
           },
     })
 }
-export{GetAllProduct,SingleProduct,GetCartShop,addNewProduct,removeProduct,userRegisterApi}
+export{GetAllProduct,SingleProduct,GetCartShop,addNewProduct,removeProduct,userRegisterApi,userLoginApi}

@@ -1,7 +1,8 @@
 import { useQuery, QueryObserverResult, useMutation, QueryClient, useQueryClient } from "@tanstack/react-query";
-import { addNewProduct, GetAllProduct, GetCartShop, removeProduct, SingleProduct, userRegisterApi } from "../Api";
+import { addNewProduct, GetAllProduct, GetCartShop, removeProduct, SingleProduct, userLoginApi, userRegisterApi } from "../Api";
 import { Axios, AxiosResponse } from "axios";
 import { ToastFn } from "../Pages/Dashboard/Product/NewProductForm";
+import { useNavigate } from "react-router-dom";
 interface AxiosType{
     config:any,
     headers:any,
@@ -25,9 +26,10 @@ interface GetAllProductsType extends Axios{
 data:productsType[]
 }
 
-const useRegister=()=>{
+const useRegister=(notify:any)=>{
   return useMutation<AxiosResponse<any>, Error, any, string[]>({
     mutationFn: userRegisterApi,
+    onSuccess:()=>{notify()},
     onError: (error) => {
       console.log(error);
 
@@ -36,6 +38,29 @@ const useRegister=()=>{
   })
 }
 
+type setUserLogin= React.Dispatch<React.SetStateAction<boolean>>;
+const useLogin=(notify:any,setUseLogin:setUserLogin)=>{
+  const navgate=useNavigate()
+  return useMutation<AxiosResponse<any>, Error, any, string[]>({
+    mutationFn: userLoginApi,
+    onSuccess:(data)=>{
+      console.log(data);
+      
+      const{login}:any=data.data;
+      if(login){
+        setUseLogin(true)
+      navgate("/dashboard")
+      }else{
+        notify()
+      }
+    },
+    onError: (error) => {
+      console.log(error);
+      notify()
+    },
+ 
+  })
+}
 const useGetAllProducts = () => {
     return useQuery({
       queryKey: ['products'],
@@ -104,4 +129,4 @@ const useGetAllProducts = () => {
    
     })
   }
-  export{useGetAllProducts,useSingleProduct,useGetCarts,useAddNewProduct,useDeleteProduct,useRegister}
+  export{useGetAllProducts,useSingleProduct,useGetCarts,useAddNewProduct,useDeleteProduct,useRegister,useLogin}

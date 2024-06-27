@@ -6,11 +6,19 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from './LoginForm';
 import Buttons from '../../DyComponents/Buttons/Buttons';
 import { useRegister } from '../../Hooks';
+import { toast, ToastContainer } from 'react-toastify';
 const RegisterForm = ({ changeFormMode }: any) => {
 
     const { register, formState: { errors }, handleSubmit } = useForm<FormValues>()
+       /*================== Toast =================*/
+       const notify = () => {
+        toast.success("با موفقیت انجام شد!", {
+            position: "bottom-right"
+        });
+   
+    }
     /*================== Register =================*/
-    const{mutate}= useRegister()
+    const{mutate}= useRegister(notify)
     
     const onSubmit: SubmitHandler<FormValues> =async (data) => {
         mutate(data)
@@ -38,6 +46,7 @@ const RegisterForm = ({ changeFormMode }: any) => {
 
                 </div>
             </Col>
+            <ToastContainer rtl />
 
 
         </div>

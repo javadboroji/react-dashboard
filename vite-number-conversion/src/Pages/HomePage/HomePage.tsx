@@ -9,6 +9,7 @@ import Products from './Products'
 import { FaShoppingCart } from "react-icons/fa";
 import ShoppingCart from './ShoppingCart'
 import Footer from './Footer'
+import SliderImage from './Banner/SliderImage'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -96,6 +97,8 @@ function HomePage() {
                     </>
                 } />
             </div>
+            {/* /*-------------------------------- Swiper ------------------------------*/}
+                <SliderImage/>
             {/*============================== Products Cards==========================================*/}
             <Products />
             <Drawer title="Cart" onClose={onClose} open={open}>

@@ -10,6 +10,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import ShoppingCart from './ShoppingCart'
 import Footer from './Footer'
 import SliderImage from './Banner/SliderImage'
+import useAddToBasket from '../../store/AddToBasket'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -75,6 +76,8 @@ function HomePage() {
     const { userLogin } = useAppContext();
 
     /*================================ Drawer ==============================*/
+    const baskateData=useAddToBasket(state=>state.products);
+
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
         setOpen(true);
@@ -92,7 +95,7 @@ function HomePage() {
                 <NavbarWidthSearch menuFix menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ?
                     <Button className='flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>خروج</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> :
                     <>
-                        <Button onClick={showDrawer} className=' flex items-center border-0 shadow-none'> <FaShoppingCart size={24} color='rgb(29 78 216 )' /></Button>
+                        <Button onClick={showDrawer} className=' flex items-center border-0 shadow-none'><span className='absolute left-[60%] text-wihte top-0 bg-sucess-text w-4 h-4 rounded-full'>{baskateData?baskateData.length:0}</span> <FaShoppingCart size={24} color='rgb(29 78 216 )' /></Button>
                         <Button className=' flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>ورود</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button>
                     </>
                 } />

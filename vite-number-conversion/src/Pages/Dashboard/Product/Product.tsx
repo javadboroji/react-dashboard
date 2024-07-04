@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import CusGrid from '../../../DyComponents/LocalComponents/CusGrid'
 import { CiCirclePlus } from "react-icons/ci";
 import { Button, TableProps } from 'antd';
@@ -23,7 +23,7 @@ function Product() {
   const{data:rows}= useGetAllProducts()
   
 /*================== Delete Product api =================*/
- const{mutate}= useDeleteProduct(notify)
+ const{mutate}= useDeleteProduct(notify,setOpen)
 
     const columns: columnProductType[]  = [
       {
@@ -57,6 +57,8 @@ function Product() {
     const openModal=()=>{
       setOpen(true)
     }
+
+    
   return (
     <div className='flex flex-col flex-1'>
       <div className='flex justify-between mx-4 items-center'>

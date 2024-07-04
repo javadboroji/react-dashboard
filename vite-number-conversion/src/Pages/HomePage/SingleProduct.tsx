@@ -42,9 +42,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({ singleProductData }) => {
         }
     }
 
-    useEffect(() => {
-        console.log(baskateData);
-        
+    useEffect(() => {        
     }, [baskateData])
     
     if (singleProductData) {

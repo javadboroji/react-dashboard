@@ -114,14 +114,16 @@ const useGetAllProducts = () => {
   }
 
   
-  const useDeleteProduct=(notify:()=>void)=>{
+  const useDeleteProduct=(notify:()=>void,setOpen:React.Dispatch<React.SetStateAction<boolean>>)=>{
     const queryClient = useQueryClient();
     return useMutation<AxiosResponse<any>, Error, any, string[]>({
      
       mutationFn: removeProduct,
       onSuccess:()=>{
         queryClient.invalidateQueries({exact:'products'}as any),
-        notify()},
+        notify();
+        setOpen(false)
+      },
       onError: (error) => {
         console.log(error);
   

@@ -25,8 +25,8 @@ const ShoppingCart=()=> {
                         <img className='w-[100px] h-[100px]' src={`../../../public/file/${product.image}`} alt={product.image}/>
                         <div className='flex flex-col'>
                             <span> {product.title}</span>
-                            <span className='text-red-500'> قیمت:{product.price} </span>
-                            <span className='text-sucess-text'>تعداد: { product.count}</span>
+                            <span className='text-red-500 my-2'> قیمت:{product.price} </span>
+                            <span className='text-sucess-text my-2'>تعداد: { product.count}</span>
                         </div>
                    </div>
                 )

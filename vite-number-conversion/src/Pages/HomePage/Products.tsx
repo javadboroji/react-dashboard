@@ -8,14 +8,17 @@ import SingleProduct from './SingleProduct';
 
 function Products() {
     const [open, setOpen] = useState(false);
-
+    const [count, setCount] = useState(0);
 
     const OpenViewProduct=(prop:any)=>{
         const productId=prop
         setOpen(true);
         mutate(productId)
     }
-   
+   const handlerClose=()=>{
+    setOpen(false);
+    setCount(0)
+   }
     /*================================ Products Api ==============================*/
     const { data, isLoading ,isSuccess} = useGetAllProducts()
     const{mutate ,data:singleProduct}= useSingleProduct()
@@ -35,8 +38,8 @@ function Products() {
                         />
                 ))}
             </Row>
-            <CusModal open={open} setOpen={setOpen}>
-                   {isSuccess&& <SingleProduct singleProductData={singleProduct?.data?.data}/>}
+            <CusModal open={open} setOpen={setOpen} handlerClose={handlerClose}>
+                   {isSuccess&& <SingleProduct singleProductData={singleProduct?.data?.data} count={count} setCount={setCount}/>}
             </CusModal>
         </div>
     )

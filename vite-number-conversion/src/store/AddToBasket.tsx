@@ -7,15 +7,15 @@ count:number
 type bascketProductType={
     products:any,
     setProductBasket:(product:baskateProduct)=>void,
-    incrementProductCount:(id:string|undefined)=>void
+    incrementProductCount:(id:string|undefined ,count:number)=>void
 }
 const useAddToBasket=create<bascketProductType>((set)=>({
     products: [],
     setProductBasket: (product) => set((state) => ({
         products: [...state.products, product],
     })),
-    incrementProductCount:(id)=>set((state)=>(
-       { products: state.products.map((item:baskateProduct)=> item._id===id ? {...item,count:item.count+1}:item)}
+    incrementProductCount:(id,count)=>set((state)=>(
+       { products: state.products.map((item:baskateProduct)=> item._id===id ? {...item,count:count}:item)}
         ))
 }))
 

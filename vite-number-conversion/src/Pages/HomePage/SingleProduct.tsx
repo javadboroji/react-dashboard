@@ -16,17 +16,21 @@ export type SingleProductType = {
     title: string
     _id?:number
 }
+
+
 export type SingleProductProps = {
     singleProductData?: SingleProductType;
+    count:number,
+    setCount:React.Dispatch<React.SetStateAction<number>>
 };
 
 
 
 
 
-const SingleProduct: React.FC<SingleProductProps> = ({ singleProductData }) => {
+const SingleProduct: React.FC<SingleProductProps> = ({ singleProductData ,count,setCount}) => {
 
-    const [count, setCount] = useState(0);
+    //const [count, setCount] = useState(0);
     //zus sate
     const{setProductBasket,incrementProductCount}= useAddToBasket()
     const baskateData=useAddToBasket(state=>state.products)
@@ -34,9 +38,9 @@ const SingleProduct: React.FC<SingleProductProps> = ({ singleProductData }) => {
         if(baskateData){
           const isProductInBasket =  baskateData.some((item:SingleProductType)=>item._id === singleProductData._id)//check Not added Product Repeded
             if(isProductInBasket ){
-                incrementProductCount(singleProductData._id)
+                incrementProductCount(singleProductData._id,count)
             }else{
-                setProductBasket({...singleProductData,count:1})
+                setProductBasket({...singleProductData,count:count})
 
             }
         }

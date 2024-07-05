@@ -8,9 +8,10 @@ type modalType = {
   data?: JSX.Element,
   children?: React.ReactNode;
   size?:string,
-  modalFooter?:any
+  modalFooter?:any,
+  handlerClose?:any
 }
-function CusModal({ open,title, setOpen, data,size,modalFooter, children  }: modalType) {
+function CusModal({ open,title, setOpen, data,size,modalFooter,handlerClose ,children  }: modalType) {
 
   const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -32,7 +33,7 @@ function CusModal({ open,title, setOpen, data,size,modalFooter, children  }: mod
         open={open}
         //onOk={handleOk}
         confirmLoading={confirmLoading}
-        onCancel={handleCancel}
+        onCancel={handlerClose?handlerClose:handleCancel}
         width={size?size: "70rem"}
         //okText={"ذخیره"}
         // okButtonProps={()=><Button></Button>}

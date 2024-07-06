@@ -29,7 +29,6 @@ function SliderImage() {
        loop={true}
        autoplay={{
            delay: 3500,
-           
            disableOnInteraction: false
        }}
         className="mySwiper">

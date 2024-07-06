@@ -147,12 +147,12 @@ export const ShoppCard: React.FC<ShoppCardProps> = ({ orderImage, orderName, ord
                     <div className='absolute opacity-0 group-hover:opacity-100   z-10 transition ease-in-out delay-150 top-[50%]  left-[50%] translate-x-[-50%] translate-y-[-100%] group-hover:translate-y-[-50%]'>
                         
                         <BtnBasComponent btnEvent={()=>viewButtonFn(productId)} 
-                        basButtonsType='light'
+                        basButtonsType='success'
                          btnText='مشاهده'
                         
                           dyStyle='bg-blue-600 text-white  min-w-40 rounded-lg text-black px-4 my-4  transition ease-in-out delay-150 hover:bg-orang-100'
                            size='sm'/>
-                        <BtnBasComponent basButtonsType='light'
+                        <BtnBasComponent basButtonsType='primary'
                          btnText='افزودن به سبد خرید' 
                          dyStyle='bg-blue-600 text-white  min-w-40 rounded-lg text-black px-4 my-4  transition ease-in-out delay-150 hover:bg-orang-100' 
                          size='sm'/>

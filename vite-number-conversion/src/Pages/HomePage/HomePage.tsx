@@ -11,6 +11,7 @@ import ShoppingCart from './ShoppingCart'
 import Footer from './Footer'
 import SliderImage from './Banner/SliderImage'
 import useAddToBasket from '../../store/AddToBasket'
+import SpecialSale from './SpecialSale/SpecialSale'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -91,7 +92,7 @@ function HomePage() {
     
     return (
         <div className='flex flex-col justify-between min-h-[100dvh]'>
-            <div className=' w-full'>
+            <div className=' '>
                 <NavbarWidthSearch menuFix menuList={menuList} headerLogo={headerLogo} boxShadow={true} fullWidth={true} leftBox={userLogin ?
                     <Button className='flex items-center border-0 shadow-none'> <Link to={'/login'} className='mx-4'>خروج</Link><FaSignOutAlt size={24} color='rgb(29 78 216 )' /></Button> :
                     <>
@@ -104,6 +105,9 @@ function HomePage() {
                 <SliderImage/>
             {/*============================== Products Cards==========================================*/}
             <Products />
+              {/*============================== special sele==========================================*/}
+                <SpecialSale/>
+
             <Drawer title="Cart" onClose={onClose} open={open}>
                 <ShoppingCart />
             </Drawer>

@@ -56,3 +56,29 @@ flex-basis: 47%;
     /* transform: translateY(150px); */
 
 }
+@media only screen and (max-width: 991px)  {
+
+    .img-small:nth-child(1){
+        flex-grow: 1;
+        flex-basis: 45%;
+        }
+        .img-small:nth-child(2){
+            flex-grow: 1;
+            flex-basis: 47%;
+        }
+        .img-small:nth-child(3){
+            flex-grow: 1;
+            flex-basis: 45%;
+        }
+        .img-small:nth-child(4){
+            flex-grow: 1;
+            flex-basis: 47%;
+        }
+        .off-badg{
+ 
+            width: calc(100% - 85%);
+            animation: ease-in 0.3s;
+
+        
+        }
+}

@@ -18,9 +18,13 @@ function SpecialSale() {
         gsap.fromTo(".off-badg", {
           opacity: 0,
           y: 200,
+          rotate:"180deg",
+          x:50
         }, {
           opacity: 1,
           y: 0,
+          x:0,
+          rotate:"0deg",
           duration: 1.5,
           scrollTrigger: {
             trigger: ".affter-title",
@@ -38,7 +42,7 @@ function SpecialSale() {
                 <h5 className='pr-2 text-xl'> فروش ویژه</h5>
             </div>
             {/*/*================================ ImageS ==============================*/}
-            <div className='flex ghallery-box'>
+            <div className=' flex flex-col lg:flex-row ghallery-box'>
                 <div className='img-larg ghallery-homePage m-2'>
                     <div className='off-badg'>
                         <span className='font-semibold text-center block text-white'> OFF</span>

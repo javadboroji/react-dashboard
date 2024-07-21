@@ -1,0 +1,136 @@
+[{
+  "_id": {
+    "$oid": "667c79491789bde9b7c9b370"
+  },
+  "category": "cloth",
+  "description": "تی شرت",
+  "image": "5124556.jpg",
+  "price": 500000,
+  "title": "تی شرت ",
+  "createdAt": {
+    "$date": "2024-06-26T20:25:45.559Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-26T20:25:45.559Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667d5c372cf77c36e4a617b9"
+  },
+  "category": "cloth",
+  "description": "شلوارلی",
+  "image": "leg.jfif",
+  "price": 850000,
+  "title": "شلوارلی",
+  "createdAt": {
+    "$date": "2024-06-27T12:33:59.940Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-27T12:33:59.940Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686fb4f204e72b9319f2e97"
+  },
+  "category": "cloth",
+  "description": "مانتو زنانه",
+  "image": "777.jpg",
+  "price": 15000000,
+  "title": "مانتو زنانه",
+  "createdAt": {
+    "$date": "2024-07-04T19:43:11.697Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-04T19:43:11.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686fb90204e72b9319f2e9d"
+  },
+  "category": "cloth",
+  "description": "تی شرت ",
+  "image": "tishert.jpg",
+  "price": 5000000,
+  "title": "تی شرت ",
+  "createdAt": {
+    "$date": "2024-07-04T19:44:16.539Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-04T19:44:16.539Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686fbb2204e72b9319f2ea1"
+  },
+  "category": "watch",
+  "description": "ساعت مردانه ",
+  "image": "watch.jpg",
+  "price": 32000000,
+  "title": "ساعت مردانه ",
+  "createdAt": {
+    "$date": "2024-07-04T19:44:50.099Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-04T19:44:50.099Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686fbd9204e72b9319f2ea5"
+  },
+  "category": "cloth",
+  "description": "کتونی سفید",
+  "image": "کتونی.jpg",
+  "price": 10000000,
+  "title": "کتونی سفید",
+  "createdAt": {
+    "$date": "2024-07-04T19:45:29.894Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-04T19:45:29.894Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686fbf8204e72b9319f2ea9"
+  },
+  "category": "glass",
+  "description": "عینک مردانه",
+  "image": "glass.jpg",
+  "price": 2000000,
+  "title": "عینک مردانه",
+  "createdAt": {
+    "$date": "2024-07-04T19:46:00.832Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-04T19:46:00.832Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686fc14204e72b9319f2ead"
+  },
+  "category": "dress",
+  "description": "شلوارک زنانه",
+  "image": "شلوارک.jpg",
+  "price": 6500000,
+  "title": "شلوارک زنانه",
+  "createdAt": {
+    "$date": "2024-07-04T19:46:28.941Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-04T19:46:28.941Z"
+  },
+  "__v": 0
+}]

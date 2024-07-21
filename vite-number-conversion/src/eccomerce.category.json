@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "669961fc25dce07ceb8f8a98"
+  },
+  "EnTitle": "cloth",
+  "PeTitle": "لباس"
+},
+{
+  "_id": {
+    "$oid": "6699626c25dce07ceb8f8a99"
+  },
+  "EnTitle": "watch",
+  "PeTitle": "ساعت"
+},
+{
+  "_id": {
+    "$oid": "669962bd25dce07ceb8f8a9a"
+  },
+  "EnTitle": "glass",
+  "PeTitle": "عینک"
+},
+{
+  "_id": {
+    "$oid": "669962fc25dce07ceb8f8a9b"
+  },
+  "EnTitle": "ornaments",
+  "PeTitle": "زیورآلات"
+}]

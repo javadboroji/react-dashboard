@@ -1,8 +1,9 @@
 import { useQuery, QueryObserverResult, useMutation, QueryClient, useQueryClient } from "@tanstack/react-query";
-import { addNewProduct, GetAllProduct, GetCartShop, removeProduct, SingleProduct, userLoginApi, userRegisterApi } from "../Api";
+import { addNewProduct, discountSubmit, GetAllProduct, GetCartShop, getCategoryList, getProductsFilter, removeProduct, SingleProduct, userLoginApi, userRegisterApi } from "../Api";
 import { Axios, AxiosResponse } from "axios";
 import { ToastFn } from "../Pages/Dashboard/Product/NewProductForm";
 import { useNavigate } from "react-router-dom";
+import { ProductsFilter } from "../Types/Types";
 interface AxiosType{
     config:any,
     headers:any,
@@ -131,4 +132,37 @@ const useGetAllProducts = () => {
    
     })
   }
-  export{useGetAllProducts,useSingleProduct,useGetCarts,useAddNewProduct,useDeleteProduct,useRegister,useLogin}
+  //discountSubmit
+  const useDiscountSubmit=()=>{
+    return useMutation<AxiosResponse<any>, Error, any, string[]>({
+      mutationFn: discountSubmit
+   
+    })
+  }
+  const useGetCategoryList =()=>{
+    return useQuery({
+      queryKey:['CategoryList'],
+      queryFn:getCategoryList,
+      refetchOnWindowFocus:false,
+      select:(data:any)=>{
+        const categoryes= data?.data.data;
+        return categoryes;
+      }
+    })
+  }
+
+  const useGetProductsFilter=()=>{
+    return useMutation<AxiosResponse<any>, Error, any, string[]>({
+     
+      mutationFn: getProductsFilter,
+      onSuccess:(data:any)=>{
+        return data
+      },
+      onError: (error) => {
+        console.log(error);
+  
+      },
+   
+    })
+  }
+  export{useGetAllProducts,useSingleProduct,useGetCarts,useAddNewProduct,useDeleteProduct,useRegister,useLogin,useDiscountSubmit,useGetCategoryList,useGetProductsFilter}

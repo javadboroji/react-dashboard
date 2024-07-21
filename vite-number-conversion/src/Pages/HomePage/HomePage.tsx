@@ -12,6 +12,7 @@ import Footer from './Footer'
 import SliderImage from './Banner/SliderImage'
 import useAddToBasket from '../../store/AddToBasket'
 import SpecialSale from './SpecialSale/SpecialSale'
+import { useGetAllProducts } from '../../Hooks'
 
 function HomePage() {
     const menuList: NavbarWidthSearchType[] = [
@@ -30,7 +31,7 @@ function HomePage() {
         {
             id: 's-3',
             title: 'محصولات',
-            url: '/',
+            url: '/filter',
             hasNested: true,
             nestedMenu: [
                 {
@@ -87,8 +88,8 @@ function HomePage() {
     const onClose = () => {
         setOpen(false);
     };
- 
-  
+    
+    const { data, isLoading ,isSuccess} = useGetAllProducts()
     
     return (
         <div className='flex flex-col justify-between min-h-[100dvh]'>
@@ -104,7 +105,7 @@ function HomePage() {
             {/* /*-------------------------------- Swiper ------------------------------*/}
                 <SliderImage/>
             {/*============================== Products Cards==========================================*/}
-            <Products />
+            <Products  data={data} isLoading={isLoading} isSuccess={isSuccess}/>
               {/*============================== special sele==========================================*/}
                 <SpecialSale/>
 

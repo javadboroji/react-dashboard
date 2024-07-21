@@ -1,12 +1,16 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import { productsType, useGetAllProducts, useSingleProduct } from '../../Hooks';
 import { Row, Spin } from 'antd';
 import { ShoppCard } from '../Components/Cards/Cards.basic';
 import CusModal from '../../DyComponents/LocalComponents/CusModal';
 import SingleProduct from './SingleProduct';
+type ProductsPropsType={
+    data:productsType[],
+    isLoading?:boolean,
+    isSuccess?:boolean
+}
 
-
-function Products() {
+const  Products:React.FC<ProductsPropsType>=(props)=> {
     const [open, setOpen] = useState(false);
     const [count, setCount] = useState(0);
 
@@ -20,12 +24,16 @@ function Products() {
     setCount(0)
    }
     /*================================ Products Api ==============================*/
-    const { data, isLoading ,isSuccess} = useGetAllProducts()
-    const{mutate ,data:singleProduct}= useSingleProduct()
+    
+    const{mutate ,data:singleProduct}= useSingleProduct();
+    useEffect(() => {
+    
+    }, [props.data])
+    
     return (
         <div className='container mx-auto mt-16 py-8'>
             <Row gutter={[24, 24]}>
-                {data && data?.map((product: productsType) => (
+                {props.data && props.data?.map((product: productsType) => (
                     <ShoppCard key={product._id} 
                     orderImage={product.image}
                      orderName={product.title}
@@ -39,7 +47,7 @@ function Products() {
                 ))}
             </Row>
             <CusModal open={open} setOpen={setOpen} handlerClose={handlerClose}>
-                   {isSuccess&& <SingleProduct singleProductData={singleProduct?.data?.data} count={count} setCount={setCount}/>}
+                   {props.isSuccess&& <SingleProduct singleProductData={singleProduct?.data?.data} count={count} setCount={setCount}/>}
             </CusModal>
         </div>
     )

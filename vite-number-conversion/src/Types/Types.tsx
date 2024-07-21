@@ -39,3 +39,9 @@ export type personLogin={
   password:string
 }
 
+export type ProductsFilter= {
+  searchTerm?: string
+  category?: string
+  price?: number[]
+  sorting?: string
+}

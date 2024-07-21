@@ -14,7 +14,8 @@ export type SingleProductType = {
     price: number
     rating: RateType
     title: string
-    _id?:number
+    _id?:number,
+    count?:number
 }
 
 

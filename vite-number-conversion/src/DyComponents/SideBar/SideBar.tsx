@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdDashboard } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { FaBlog } from "react-icons/fa";
@@ -6,7 +6,7 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiSolidCategory } from "react-icons/bi";
 import { TbReport } from "react-icons/tb";
 import { Link } from 'react-router-dom';
-import { CgComponents } from "react-icons/cg";
+import { CgComponents, CgWebsite } from "react-icons/cg";
 import { IoIosArrowDown } from "react-icons/io";
 
 type menu = {
@@ -19,8 +19,16 @@ type menu = {
 }
 
 type menusType = menu[]
+
 function SideBar() {
     const dashBoardItems: menusType = [
+        {
+            id: '1',
+            name: 'وب سایت',
+            link: '/',
+            icon: <CgWebsite size={24} />,
+            nested: false
+        },
         {
             id: '1',
             name: 'پنل کاربری',
@@ -67,7 +75,7 @@ function SideBar() {
             id: '7',
             name: 'کامپوننت ها',
             link: '',
-            icon:<CgComponents size={24} />,
+            icon: <CgComponents size={24} />,
             nested: true,
             child: [{
                 id: 'c1-7',
@@ -94,40 +102,69 @@ function SideBar() {
                 name: ' کارد ها',
                 link: '/cards',
             },
-            {
-                id: 'c6-7',
-                name: ' هدر ها',
-                link: '/headers',
-            },
-            {
-                id: 'c6-7',
-                name: 'Toast',
-                link: '/Toasts',
-            },
-            {
-                id: 'c6-7',
-                name: 'فوتر',
-                link: '/footers',
-            },
+            // {
+            //     id: 'c6-7',
+            //     name: ' هدر ها',
+            //     link: '/headers',
+            // },
+            // {
+            //     id: 'c6-8',
+            //     name: 'Toast',
+            //     link: '/Toasts',
+            // },
+            // {
+            //     id: 'c6-9 ',
+            //     name: 'فوتر',
+            //     link: '/footers',
+            // },
             ]
         },
     ]
+    const [submenu, setSubmenu] = useState<string[]>([])
+    const toggleNestedMenu = (id: string) => {
+        const hasOpen = submenu.includes(id)
+        if (hasOpen) {
+            const updateMenu = submenu.filter(menu => menu != id)
+            console.log('close');
+
+            setSubmenu(updateMenu);
+        } else {
+            console.log('poen');
+
+            setSubmenu((prev) => [...prev, id]);
+        }
+    }
+    useEffect(() => {
+
+    }, [submenu])
+
     return (
-        <div className='bg-Navy-blue mx-2 rounded-2xl my-2 w-64  '>
+        <div className='bg-Navy-blue h-[100dvh] mx-2 rounded-2xl my-2 w-64  '>
             {/*<p className='text-wihte bg-black p-6 font-semibold text-2xl'>داشبورد</p>*/}
             <div className='flex flex-col'>
                 {dashBoardItems && dashBoardItems.map((menu) => (
                     <div key={menu.id}>
-                        <Link className='flex relative items-center text-wihte p-6 text-base font-medium mr-2' key={menu.id} to={menu.link}>
-                            <span className='ml-4'>{menu.icon}</span>
-                            <span>{menu.name}</span>
-                           {menu.nested&&<span className='absolute left-4'> { <IoIosArrowDown  size={18}/>}</span>}
 
-                        </Link>
-                        {menu.nested && <ul className=' flex flex-col px-6 py-0'>
+                        {
+                            !menu.nested ?
+                                <Link className='flex relative items-center text-wihte p-6 text-base font-medium mr-2' key={menu.id} to={menu.link}>
+                                    <span className='ml-4'>{menu.icon}</span>
+                                    <span>{menu.name}</span>
+
+                                </Link>
+                                :
+                                <p onClick={() => toggleNestedMenu(menu.id)} className='flex relative items-center hover:cursor-pointer text-wihte p-6 text-base font-medium mr-2' key={menu.id}>
+                                    <span className='ml-4'>{menu.icon}</span>
+                                    <span>{menu.name}</span>
+                                    <span className='absolute left-4'> {<IoIosArrowDown size={18} />}</span>
+
+                                </p>
+
+                        }
+                        {menu.nested && <ul className={` ${submenu.includes(menu.id) ? 'visible h-auto' : 'hidden h-0'} duration-500 ease-in-out  flex flex-col heigth-transition  px-6 py-0`}>
                             {menu.child?.map((child) => (
                                 <li key={child.id}>
-                                    <Link  className='flex items-center text-wihte p-4 text-base font-medium mr-4' to={child.link}>
+                                    <Link className='flex items-center text-wihte p-4 text-base font-medium mr-4' to={child.link}>
                                         {child.name}
                                     </Link>
                                 </li>

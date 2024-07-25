@@ -77,6 +77,9 @@ button:focus-visible {
   background: #D6D6D6;
   margin-right: 1rem;
 }
+.heigth-transition{
+  transition:  0.5s  ease-in-out;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -17,7 +17,7 @@ const NavbarWidthSearch: React.FC<NavbarWidthSearchProps> = ({ menuList, headerL
     }
     return (
         <>
-            <nav className={`${showMwenu? 'h-[100dvh]':'h-auto'}  ${menuFix && 'fixed w-full top-0 right-2 left-2 z-50'} bg-white border-gray-200 dark:bg-gray-900 ${fullWidth ? 'px-8' : 'px-20 md:px-10 sm:px-0'} ${boxShadow && 'shadow-[0_3px_10px_rgb(0,0,0,0.2)]'}`}>
+            <nav className={`${showMwenu? 'h-[100dvh]':'h-auto'}  ${menuFix && 'fixed w-full top-0 right-0 left-0 z-50'} bg-white border-gray-200 dark:bg-gray-900 ${fullWidth ? 'px-8' : 'px-20 md:px-10 sm:px-0'} ${boxShadow && 'shadow-[0_3px_10px_rgb(0,0,0,0.2)]'}`}>
                 <div className=" w-full flex flex-wrap min-h-16 justify-between mx-auto ">
                     <Link to={headerLogo.homeUrl} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={headerLogo.logSrc} className="h-8" alt="Flowbite Logo" />

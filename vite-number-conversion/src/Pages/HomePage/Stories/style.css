@@ -1,0 +1,27 @@
+.swiperStorie {
+    width: 100%;
+}
+.storie-card-description{
+    font-size: 11px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    padding: 4px 16px;
+    text-align: center;
+}
+.storie-modal .ant-modal-content{
+    background-color: transparent;
+    box-shadow: none;
+}
+/* .swiperStorie .swiper-slide {
+    width: 10rem !important
+    ;
+} */
+@media only screen and (max-width: 991px)  {
+    .swiperStorie .swiper-slide {
+        width: 8rem !important
+        ;
+    }
+}

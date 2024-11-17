@@ -30,7 +30,7 @@ function SideBar() {
             nested: false
         },
         {
-            id: '1',
+            id: '11',
             name: 'پنل کاربری',
             link: '/dashboard',
             icon: <MdDashboard size={24} />,

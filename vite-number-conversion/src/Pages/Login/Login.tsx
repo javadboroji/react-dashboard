@@ -10,7 +10,7 @@ import { useAppContext } from '../../Context/UserProvider.tsx';
 
 
 interface LoginProps{
-    setUserLogin: React.Dispatch<React.SetStateAction<boolean>>;
+    setUserLogin?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Login:React.FC<LoginProps>=({setUserLogin})=> {

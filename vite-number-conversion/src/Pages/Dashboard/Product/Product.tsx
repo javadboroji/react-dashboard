@@ -8,6 +8,7 @@ import NewProductForm from './NewProductForm';
 import { useDeleteProduct, useGetAllProducts } from '../../../Hooks';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import DashboardLayout from '../../Components/DashboardLayout/DashboardLayout';
 
 
 function Product() {
@@ -60,8 +61,8 @@ function Product() {
 
     
   return (
-    <div className='flex flex-col flex-1'>
-      <div className='flex justify-between mx-4 items-center'>
+    <DashboardLayout>
+        <div className='flex justify-between mx-4 items-center'>
       <h1 className='text-orang-100 text-3xl py-4'>محصولات</h1>
      <Button onClick={openModal} style={{background:'transparent' ,boxShadow:'none' ,color:'blue'}}>
       افزودن
@@ -73,7 +74,8 @@ function Product() {
         </CusModal>
         <ToastContainer rtl />
 
-    </div>
+    </DashboardLayout>
+    
   )
 }
 

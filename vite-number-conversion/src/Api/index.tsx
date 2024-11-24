@@ -89,6 +89,13 @@ const getUsers = async () => {
     },
   });
 };
+const getRoles = async () => {
+  return instance.get("http://localhost:8080/api/users/getAllRoles", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 export {
   GetAllProduct,
   SingleProduct,
@@ -101,4 +108,5 @@ export {
   getCategoryList,
   getProductsFilter,
   getUsers,
+  getRoles
 };

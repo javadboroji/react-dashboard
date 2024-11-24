@@ -12,6 +12,7 @@ import {
   GetCartShop,
   getCategoryList,
   getProductsFilter,
+  getRoles,
   getUsers,
   removeProduct,
   SingleProduct,
@@ -67,7 +68,7 @@ const useLogin = (notify: any, setUseLogin: setUserLogin) => {
       localStorage.setItem("useInfo", JSON.stringify(data.data.data));
       localStorage.setItem("_token", JSON.stringify(token));
       if (token) {
-        setUseLogin(true);
+        //setUseLogin(true);
         navgate("/dashboard");
       } else {
         notify();
@@ -180,6 +181,17 @@ const useGetUsers=()=>{
     },
   });
 }
+const useGetRoles=()=>{
+  return useQuery({
+    queryKey: ["Roles"],
+    queryFn: getRoles,
+    refetchOnWindowFocus: false,
+    select: (data: any) => {
+      let products = data?.data.data;
+      return products;
+    },
+  });
+}
 export {
   useGetAllProducts,
   useSingleProduct,
@@ -191,5 +203,6 @@ export {
   useDiscountSubmit,
   useGetCategoryList,
   useGetProductsFilter,
-  useGetUsers
+  useGetUsers,
+  useGetRoles
 };

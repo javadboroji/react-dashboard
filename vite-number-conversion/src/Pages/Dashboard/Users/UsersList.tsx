@@ -83,6 +83,7 @@ function UsersList() {
       <div className="flex">
         {isModalOpen && (
           <NewUserForm
+          intialData={rowSelect}
             handleOk={handleOk}
             handleCancel={handleCancel}
             setIsModalOpen={setIsModalOpen}

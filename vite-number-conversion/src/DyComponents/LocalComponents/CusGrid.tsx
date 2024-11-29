@@ -75,8 +75,7 @@ const CusGrid: React.FC<DataType> = ({ data, columns, modal, modaltitle ,rowSele
 
   //column
   const col = [...columns];
-
-  useEffect(() => {
+ useEffect(() => {
     console.log(rowSelect);
   }, [rowSelect]);
 

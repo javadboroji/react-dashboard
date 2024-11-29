@@ -2,10 +2,11 @@ import { IoIosSettings } from "react-icons/io";
 import { IoIosNotifications } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import useGetUserInfo from "../../Hooks/getUser";
+import useUserLogin from "../../store/UserAuth";
 HeaderAction.propTypes = {};
 
 function HeaderAction() {
-  const user = useGetUserInfo();
+  const {user} = useUserLogin();
   return (
     <div className={"flex  justify-between w-[95%]"}>
       <div className={"flex items-center"}>
@@ -21,7 +22,7 @@ function HeaderAction() {
           {" "}
           <MdEmail color={"#fff"} fontSize={24} />
         </button>
-      </div>
+      </div>  
       <div className={"flex w-40 items-center"}>
         <div className={"w-16 h-16 rounded-full bg-white "}>
      

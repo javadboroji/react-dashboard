@@ -5,7 +5,7 @@ type selectInputType ={
   lable:string
 }
 type formSelectType={
-  defualtValue?:string,
+  defualtValue?:string|number,
   options:selectInputType[],
   style?:string,
   inputLable?:string,
@@ -14,7 +14,7 @@ type formSelectType={
 
 function  FormSelect(props:formSelectType) {
   const {defualtValue,options,style ,inputLable}=props
-  const handleChange = (value: string) => {
+  const handleChange = (value: string|number) => {
     console.log(`selected ${value}`);
   };
   return (

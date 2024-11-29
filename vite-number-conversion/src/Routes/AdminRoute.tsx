@@ -6,13 +6,14 @@ import React, {
   Suspense,
 } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useAppContext } from "../Context/UserProvider";
-import SideBar from "../DyComponents/SideBar/SideBar";
-import HeaderLayout from "../DyComponents/Header/HeaderLayout";
+import Cookies from "js-cookie";
+
 import { Spin } from "antd";
 import Login from "../Pages/Login/Login";
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import HomePage from "../Pages/HomePage/HomePage";
+import { user } from "../Types/Types";
+import ProtectedRoute from "./ProtectedRoute";
+import useUserLogin from "../store/UserAuth";
 
 const LazyDashboard = lazy(() => import("../Pages/Dashboard/Dashboard"));
 const LazyProduct = lazy(() => import("../Pages/Dashboard/Product/Product"));
@@ -46,10 +47,13 @@ const LazCheckout = lazy(() => import("../Pages/Checkout/Checkout"));
 const LazFilter = lazy(() => import("../Pages/Filter/Filter"));
 
 function AdminRoute() {
-  const user = JSON.parse(localStorage.getItem("useInfo") as string);
+  const { user } = useUserLogin();
+  const [userLogin, setUserlogin] = useState<user | null>(null);
   useEffect(() => {
+    if (user) {
+      setUserlogin(user);
+    }
   }, [user]);
-
   return (
     <div>
       <BrowserRouter>
@@ -65,38 +69,82 @@ function AdminRoute() {
             <Route path="/Checkout" element={<LazCheckout />} />
             <Route path="/filter" element={<LazFilter />} />
             <Route path="/login" element={<Login />} />
+
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/product"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyProduct />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyUsersList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/buttons"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyButtonsCom />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/forms"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyFormsBas />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/modals"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyModalBas />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/headers"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyHeaderBasic />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/cards"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyCardsBasic />
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route path='/toasts' element={<LazyToastBasic />} /> */}
+            <Route
+              path="/footers"
+              element={
+                <ProtectedRoute user={userLogin}>
+                  <LazyFooter />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Suspense>
-        {user?.role ? (
-          <>
-            
-            <div className="flex">
-              
-              <Suspense
-                fallback={
-                  <div className="min-w-full min-h-screen">
-                    <Spin size="small" />
-                  </div>
-                }
-              >
-                <Routes>
-                  <>
-                    <Route path="/dashboard" element={<LazyDashboard />} />
-                    <Route path="/product" element={<LazyProduct />} />
-                    <Route path="/users" element={<LazyUsersList />} />
-                    <Route path="/buttons" element={<LazyButtonsCom />} />
-                    <Route path="/forms" element={<LazyFormsBas />} />
-                    <Route path="/modals" element={<LazyModalBas />} />
-                    <Route path="/headers" element={<LazyHeaderBasic />} />
-                    <Route path="/cards" element={<LazyCardsBasic />} />
-                    {/* <Route path='/toasts' element={<LazyToastBasic />} /> */}
-                    <Route path="/footers" element={<LazyFooter />} />
-                  </>
-                </Routes>
-              </Suspense>
-            </div>
-          </>
-        ) : null}
       </BrowserRouter>
     </div>
   );

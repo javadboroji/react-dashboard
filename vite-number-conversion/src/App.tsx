@@ -16,8 +16,9 @@ import {
 import { ToastContainer } from 'react-toastify';
 function App() {
   dayjs.locale('fa_IR');
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient();
 
+  
 
   return (
     <ConfigProvider

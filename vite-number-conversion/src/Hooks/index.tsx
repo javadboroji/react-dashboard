@@ -5,6 +5,7 @@ import {
   QueryClient,
   useQueryClient,
 } from "@tanstack/react-query";
+import Cookies from "js-cookie";
 import {
   addNewProduct,
   discountSubmit,
@@ -23,6 +24,7 @@ import { Axios, AxiosResponse } from "axios";
 import { ToastFn } from "../Pages/Dashboard/Product/NewProductForm";
 import { useNavigate } from "react-router-dom";
 import { ProductsFilter } from "../Types/Types";
+import useUserLogin from "../store/UserAuth";
 interface AxiosType {
   config: any;
   headers: any;
@@ -60,15 +62,16 @@ const useRegister = (notify: any) => {
 
 type setUserLogin = React.Dispatch<React.SetStateAction<boolean>>;
 const useLogin = (notify: any, setUseLogin: setUserLogin) => {
+  const { setUser } = useUserLogin();
   const navgate = useNavigate();
   return useMutation<AxiosResponse<any>, Error, any, string[]>({
     mutationFn: userLoginApi,
     onSuccess: (data) => {
       const { token } = data.data;
-      localStorage.setItem("useInfo", JSON.stringify(data.data.data));
-      localStorage.setItem("_token", JSON.stringify(token));
+      Cookies.set("_token", token, { expires: 1 });
       if (token) {
-        //setUseLogin(true);
+        setUser(data.data.data);
+
         navgate("/dashboard");
       } else {
         notify();
@@ -170,7 +173,7 @@ const useGetProductsFilter = () => {
   });
 };
 
-const useGetUsers=()=>{
+const useGetUsers = () => {
   return useQuery({
     queryKey: ["users"],
     queryFn: getUsers,
@@ -180,8 +183,8 @@ const useGetUsers=()=>{
       return products;
     },
   });
-}
-const useGetRoles=()=>{
+};
+const useGetRoles = () => {
   return useQuery({
     queryKey: ["Roles"],
     queryFn: getRoles,
@@ -191,7 +194,7 @@ const useGetRoles=()=>{
       return products;
     },
   });
-}
+};
 export {
   useGetAllProducts,
   useSingleProduct,
@@ -204,5 +207,5 @@ export {
   useGetCategoryList,
   useGetProductsFilter,
   useGetUsers,
-  useGetRoles
+  useGetRoles,
 };

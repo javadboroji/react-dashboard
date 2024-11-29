@@ -6,14 +6,13 @@ import React, {
   Suspense,
 } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cookies from "js-cookie";
-
 import { Spin } from "antd";
 import Login from "../Pages/Login/Login";
 import HomePage from "../Pages/HomePage/HomePage";
 import { user } from "../Types/Types";
 import ProtectedRoute from "./ProtectedRoute";
 import useUserLogin from "../store/UserAuth";
+import NewProductForm from "../Pages/Dashboard/Product/NewProductForm";
 
 const LazyDashboard = lazy(() => import("../Pages/Dashboard/Dashboard"));
 const LazyProduct = lazy(() => import("../Pages/Dashboard/Product/Product"));
@@ -48,7 +47,7 @@ const LazFilter = lazy(() => import("../Pages/Filter/Filter"));
 
 function AdminRoute() {
   const { user } = useUserLogin();
-  const [userLogin, setUserlogin] = useState<user | null>(null);
+  const [userLogin, setUserlogin] = useState<user | null>(user);
   useEffect(() => {
     if (user) {
       setUserlogin(user);
@@ -85,7 +84,17 @@ function AdminRoute() {
                   <LazyProduct />
                 </ProtectedRoute>
               }
-            />
+            >
+           
+            </Route>
+            <Route
+                path="/product/newProduct"
+                element={
+                  <ProtectedRoute user={userLogin}>
+                    <NewProductForm />
+                  </ProtectedRoute>
+                }
+              />
             <Route
               path="/users"
               element={

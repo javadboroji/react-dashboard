@@ -1,3 +1,3 @@
 export type datePickerTypes={
-    placeholder:string
+    placeholder?:string
 }
